@@ -1,0 +1,3 @@
+SQLSTATE[HY000] [1049] Unknown database 'restaurantt'
+SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: No such host is known. 
+SQLSTATE[HY000] [1045] Access denied for user 'lt142'@'localhost' (using password: YES)

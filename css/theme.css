@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    position: relative;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.display-error {
+    color: #FF0000;
+    font-size: 12px;
+    padding: 0 0 0 0.8rem;
+}
+
+.input-error {
+    border: 1px solid #FF0000 !important;
+}
+
+.confirmation_message {
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.confirmation_success {
+    border: 1px solid #53d572;
+    background: #cbf2d4;
+}
+
+.confirmation_error {
+    background: #fbc6c3;
+    border: 1px solid #f44336;
+}
+
+.header {
+    z-index: 999;
+    color: rgba(0, 0, 0, 0.6);
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11);
+}
+
+.footer {
+    z-index: 999;
+    color: rgba(0, 0, 0, 0.6);
+    background: #fff;
+    box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.11);
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-logo {
+    width: 80px;
+}
+
+.my-account-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-size: 15px;
+    cursor: default;
+}
+
+.my-account-preview {
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.7);
+    margin-left: -2.5%;
+    display: none;
+}
+
+.my-account-preview-name {
+    border-bottom: 1px #e6e6e6 solid;
+    padding: 10px;
+    cursor: default;
+}
+
+.my-account-preview-name span {
+    font-weight: 600;
+}
+
+.my-account-preview-href {
+    padding: 10px;
+}
+
+.my-account-preview-log-out {
+    padding: 10px;
+    border-top: 1px #e6e6e6 solid;
+}
+
+.my-account-preview-href:hover,
+.my-account-preview-log-out:hover  {
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.copyright {
+    text-align: center;
+    width: 100%;
+}
+
+.item-selected {
+    background: rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+}

@@ -1,0 +1,62 @@
+.header {
+    position: relative;
+    z-index: 999;
+    color: rgba(0, 0, 0, 0.6);
+    background: #fff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11);
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-logo {
+    width: 80px;
+}
+
+.my-account-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-size: 15px;
+    cursor: default;
+}
+
+.my-account-preview {
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.7);
+    margin-left: -2.5%;
+    display: none;
+}
+
+.my-account-preview-name {
+    border-bottom: 1px #e6e6e6 solid;
+    padding: 10px;
+    cursor: default;
+}
+
+.my-account-preview-name span {
+    font-weight: 600;
+}
+
+.my-account-preview-href {
+    padding: 10px;
+}
+
+.my-account-preview-log-out {
+    padding: 10px;
+    border-top: 1px #e6e6e6 solid;
+}
+
+.my-account-preview-href:hover,
+.my-account-preview-log-out:hover  {
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}

@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap');
+
+/* CSS RESET */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	/*font-family: 'Roboto', sans-serif;*/
+	font-family: 'Montserrat', sans-serif;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* LOGIN PAGE */
+
+.page {
+	display: flex;
+	height: 100vh;
+}
+
+
+/* SIDE SCREEN */
+
+
+.sideScreen {
+	flex: 1 1 35%;
+	background: url('../assets/sideBG.jpg') no-repeat fixed;
+	background-size: cover;
+	margin: 0 auto;
+	position: relative;
+}
+
+.sideContent {
+    display: block;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.sideTitle {
+	text-align: center;
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+}
+
+.sideText {
+	text-align: center;
+    color: #fff;
+    max-width: 220px;
+    margin: 0 auto;
+    margin-bottom: 2.6rem;
+    font-size: .85rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.sideButton {
+	display: block;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    border-radius: 5rem;
+    border-color: #fff;
+    border-style: solid;
+    background: transparent;
+    color: #fff;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+}
+
+.sideButton:hover {
+	background: rgba(255, 255, 255, .1);
+	cursor: pointer;
+}
+
+
+/* MAIN SCREEN */
+
+
+.mainScreen {
+	flex: 1 1 65%;
+}
+
+.mainContent {
+	display: block;
+    position: absolute;
+    top: 25%;
+    left: 65%;
+    width: 50%;
+    transform: translate(-45%);
+}
+
+.mainTitle {
+    font-size: 2.2rem;
+    margin-bottom: 1.4rem;
+    font-weight: 700;
+    color: #37383d;
+}
+
+.mainSocials {
+
+}
+
+.mainNote {
+	text-align: left;
+    margin: 0 auto;
+    font-size: .9rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #37383d;
+}
+
+.inputContainer {
+	display: flex;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.inputContainer input {
+    padding: 0.8rem 1rem;
+    background: #f3f3f3;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.inputContainer input:focus {
+	outline: none;
+}
+
+.inputContainer select {
+    width: 99%;
+    padding: 0.75rem 0.75rem;
+    background: #f3f3f3;
+    border: none;
+    color: #757575;
+    border-radius: 5px;
+}
+
+.inputContainer select:focus {
+    outline: none;
+}
+
+.forgotPassword {
+	text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.forgotPassword:hover {
+	cursor: pointer;
+}
+
+.buttonContainer {
+    display: flex;
+    margin-top: 5rem;
+}
+
+.mainButton {
+	display: block;
+    margin-right: 1rem;
+    padding: 1rem 4rem;
+    border-radius: 5rem;
+    border-color: #fff;
+    border-style: solid;
+    background: #37383d;
+    color: #fff;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+}
+
+.mainButton:hover {
+	cursor: pointer;
+	background: rgba(55, 56, 61, .85);
+}
+
+.secondaryButton {
+    display: block;
+    padding: 1rem 4rem;
+    border-radius: 5rem;
+    border-color: #37383d;
+    border-style: solid;
+    background: transparent;
+    color: #37383d;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .8px;
+    transition: all .3s ease
+}
+
+.secondaryButton:hover {
+    cursor: pointer;
+    background: rgba(55, 56, 61, .15);
+}
+
+.headerContainer {
+    margin-bottom: 2.6rem;
+}
+
+.headerImg {
+    height: 110px;
+    width: auto;
+    margin-right: 2rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.spacer-right {
+    margin-right: 1rem;
+}
+
+.imageContainer {
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.imageContainer img {
+    width: 120px;
+}

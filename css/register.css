@@ -1,0 +1,171 @@
+/* REGISTER PAGE */
+
+.page {
+	display: flex;
+	height: 100vh;
+}
+
+
+/* SIDE SCREEN */
+
+
+.sideScreen {
+	flex: 1 1 35%;
+	background: url('../assets/sideBG.jpg') no-repeat fixed;
+	background-size: cover;
+	margin: 0 auto;
+	position: relative;
+}
+
+.sideContent {
+    display: block;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.sideTitle {
+	text-align: center;
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 1.4rem;
+    font-weight: 700;
+}
+
+.sideText {
+	text-align: center;
+    color: #fff;
+    max-width: 220px;
+    margin: 0 auto;
+    margin-bottom: 2.6rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.sideButton {
+	display: block;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    border-radius: 5rem;
+    border-color: #fff;
+    border-style: solid;
+    background: transparent;
+    color: #fff;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+}
+
+.sideButton:hover {
+	background: rgba(255, 255, 255, .1);
+	cursor: pointer;
+}
+
+
+/* MAIN SCREEN */
+
+
+.mainScreen {
+	flex: 1 1 65%;
+}
+
+.mainContent {
+	display: block;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-25%);
+}
+
+.mainTitle {
+	text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 1.4rem;
+    font-weight: 700;
+    color: #37383d;
+}
+
+.mainSocials {
+
+}
+
+.mainNote {
+	text-align: center;
+    max-width: 220px;
+    margin: 0 auto;
+    margin-bottom: 2.6rem;
+    font-size: .9rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: #37383d;
+}
+
+.inputContainer {
+	display: block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: 20rem;
+}
+
+.inputContainer input {
+	width: 89%;
+    padding: 0.8rem 1rem;
+    background: #f3f3f3;
+    border: none;
+    border-radius: 5px;
+}
+
+.inputContainer input:focus {
+	outline: none;
+}
+
+.inputContainer select {
+    width: 99%;
+    padding: 0.75rem 0.75rem;
+    background: #f3f3f3;
+    border: none;
+    color: #757575;
+    border-radius: 5px;
+}
+
+.inputContainer select:focus {
+    outline: none;
+}
+
+.forgotPassword {
+	text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.forgotPassword:hover {
+	cursor: pointer;
+}
+
+.mainButton {
+	display: block;
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    border-radius: 5rem;
+    border-color: #fff;
+    border-style: solid;
+    background: #37383d;
+    color: #fff;
+    border-width: 2px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+}
+
+.mainButton:hover {
+	cursor: pointer;
+	background: rgba(55, 56, 61, .85);
+}
