@@ -150,6 +150,24 @@ class User
         return false;
     }
 
+    public static function getUsers()
+    {
+        $stmt = DbUtils::getInstance()->prepare("SELECT `ID`, `first_name`, `last_name` FROM `users`");
+        $stmt->execute();
+        $users = $stmt->fetchAll();
+
+        $output = [];
+        foreach ($users as $user) {
+            $output[] = [
+                'ID' => $user['ID'],
+                'first_name' => $user['first_name'],
+                'last_name' => $user['last_name']
+            ];
+        }
+
+        return $output;
+    }
+
     /**
      * @return mixed
      */

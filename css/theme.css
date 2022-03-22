@@ -114,13 +114,36 @@ a {
     width: 80px;
 }
 
-.my-account-inner {
+.my-account-inner,
+.management_main {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     font-size: 15px;
     cursor: default;
+
+}
+
+.management_actions {
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.7);
+    margin-left: -2.5%;
+    width: 13rem;
+    display: none;
+    z-index: 9999;
+}
+
+.management_action:hover {
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.management_action {
+    padding: 10px;
+    cursor: default;
+    border-bottom: 1px #e6e6e6 solid;
 }
 
 .my-account-preview {
@@ -129,6 +152,7 @@ a {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.7);
     margin-left: -2.5%;
     display: none;
+    z-index: 9999;
 }
 
 .my-account-preview-name {

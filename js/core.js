@@ -6,6 +6,14 @@ $('.my-account')
         $('.my-account-preview').fadeOut(200);
     });
 
+$('.management_inner')
+    .hover(function () {
+        $('.management_actions').fadeIn(200);
+    })
+    .mouseleave(function () {
+        $('.management_actions').fadeOut(200);
+    });
+
 $('body')
     .on('change', 'input', function() {
         $(this).removeClass('input-error');
