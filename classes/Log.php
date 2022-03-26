@@ -26,7 +26,7 @@ class Log
 
     public static function insertLog($ID_user, $action, $details): bool
     {
-        $stmt = DbUtils::getInstance()->prepare("INSERT INTO `logs`(`ID_user`, `action`, `details`) VALUES (?, ?, ?)");
+        $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO `logs`(`ID_user`, `action`, `details`) VALUES (?, ?, ?)");
         $stmt->execute(array($ID_user, $action, $details));
 
         return true;
@@ -43,7 +43,7 @@ class Log
             $sql .= " AND `date` < '".$date_to.":00'";
         }
 
-        $stmt = DbUtils::getInstance()->prepare($sql.' ORDER BY `ID` '.$sort);
+        $stmt = DbUtils::getInstance(true)->prepare($sql.' ORDER BY `ID` '.$sort);
         $stmt->execute([$ID_user, $action]);
         return $stmt->fetchAll();
     }

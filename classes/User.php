@@ -17,7 +17,7 @@ class User
     }
 
     private function load_profile($id) {
-        $stmt = DbUtils::getInstance()->prepare("SELECT * FROM `users` WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($id));
         $user = $stmt->fetch();
 
@@ -30,7 +30,7 @@ class User
 
     public static function checkEmail($email, $id_user = false): bool
     {
-        $stmt = DbUtils::getInstance()->prepare("SELECT * FROM `users` WHERE `email` = ? ".($id_user ? ' AND `ID` <> '.$id_user : ''));
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `email` = ? ".($id_user ? ' AND `ID` <> '.$id_user : ''));
         $stmt->execute(array($email));
         $user = $stmt->fetch();
 
@@ -43,14 +43,14 @@ class User
 
     public static function login($email, $password): int
     {
-        $stmt = DbUtils::getInstance()->prepare("SELECT * FROM `users` WHERE `email` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `email` = ?");
         $stmt->execute(array($email));
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
             if (password_needs_rehash($user['password'], PASSWORD_DEFAULT)) {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt_ = DbUtils::getInstance()->prepare('UPDATE `users` SET `password` = ? WHERE `ID` = ?');
+                $stmt_ = DbUtils::getInstance(true)->prepare('UPDATE `users` SET `password` = ? WHERE `ID` = ?');
                 $stmt_->execute(array($hash, $user['ID']));
             }
 
@@ -85,7 +85,7 @@ class User
 
     private static function updateDetails($first_name, $last_name, $email, $id)
     {
-        $stmt = DbUtils::getInstance()->prepare("UPDATE `users` SET `email` = ?, `first_name` = ?, `last_name` = ? WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `users` SET `email` = ?, `first_name` = ?, `last_name` = ? WHERE `ID` = ?");
         $stmt->execute(array($email, $first_name, $last_name, $id));
     }
 
@@ -100,7 +100,7 @@ class User
     public static function register($first_name, $last_name, $email, $password, $access_level): bool
     {
         if (!User::checkEmail($email)) {
-            $stmt = DbUtils::getInstance()->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`) VALUES (?, ?, ?, ?, ?)");
+            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email, $access_level));
             return true;
         }
@@ -118,7 +118,7 @@ class User
 
     public static function getDetails($id): array
     {
-        $stmt = DbUtils::getInstance()->prepare("SELECT * FROM `users` WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($id));
         $user = $stmt->fetch();
 
@@ -142,12 +142,12 @@ class User
 
     public static function changePassword($old_password, $new_password): bool
     {
-        $stmt = DbUtils::getInstance()->prepare("SELECT `password` FROM `users` WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT `password` FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($_SESSION['id_user']));
         $user = $stmt->fetch();
 
         if ($user && password_verify($old_password, $user['password'])) {
-            $stmt = DbUtils::getInstance()->prepare("UPDATE `users` SET `password` = ? WHERE `ID` = ?");
+            $stmt = DbUtils::getInstance(true)->prepare("UPDATE `users` SET `password` = ? WHERE `ID` = ?");
             $stmt->execute(array(password_hash($new_password, PASSWORD_DEFAULT),$_SESSION['id_user']));
             return true;
         }
@@ -157,7 +157,7 @@ class User
 
     public static function getUsers()
     {
-        $stmt = DbUtils::getInstance()->prepare("SELECT `ID`, `first_name`, `last_name` FROM `users`");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT `ID`, `first_name`, `last_name` FROM `users`");
         $stmt->execute();
         $users = $stmt->fetchAll();
 

@@ -41,6 +41,6 @@ class Link
             $_SERVER['REQUEST_URI']
         );
 
-        return basename($current_location, ".php");;
+        return basename($current_location, ".php");
     }
 }
