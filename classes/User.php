@@ -49,7 +49,7 @@ class User
 
         if ($user && password_verify($password, $user['password'])) {
             if (password_needs_rehash($user['password'], PASSWORD_DEFAULT)) {
-                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                $hash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt_ = DbUtils::getInstance()->prepare('UPDATE `users` SET `password` = ? WHERE `ID` = ?');
                 $stmt_->execute(array($hash, $user['ID']));
             }
@@ -58,7 +58,12 @@ class User
                 return 2;
             }
 
+            //insert log
+            Log::insertLog($user['ID'], 'login', 'logged in from IP '.$_SERVER['REMOTE_ADDR']);
+
+            //update session ID
             $_SESSION['id_user'] = $user['ID'];
+
             return 3;
         }
 

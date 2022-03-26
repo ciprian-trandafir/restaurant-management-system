@@ -7,8 +7,8 @@
         </div>
         <?php
             $user = new User($_SESSION['id_user']);
+            $current_location = Link::get_current_location();
             if ($user->getAccessLevel() == 2) {
-                $current_location = Link::get_current_location();
                 $current_location == 'logs' ? $class = 'item-selected' : $class = '';
                 echo '<div class="management">
                     <div class="management_inner">

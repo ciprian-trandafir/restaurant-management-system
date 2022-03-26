@@ -23,32 +23,39 @@ User::check_page();
     <div class="page">
         <div class="sideMenu">
             <div class="menu-item">
-                <label for="user">User</label>
-                <select name="user" id="user">
-                    <option value="" disabled selected>Select User</option>
-                    <option value="manager">Manager</option>
-                    <option value="ospatar">Ospatar</option>
-                    <option value="bucatar">Bucatar</option>
-                </select>
+                <div class="select-user">
+                    <label for="user">User</label>
+                    <select name="user" id="user">
+                        <option value="" disabled selected>Select User</option>
+                        <?php
+                        $users = User::getUsers();
+                        foreach($users as $user) {
+                            echo '<option value="'.$user['ID'].'">'.$user['first_name'].' '.$user['last_name'].'</option>';
+                        }
+                        ?>
+                    </select>
+                    <span class="display-error"></span>
+                </div>
             </div>
             <div class="menu-item">
-                <label for="actions">Actions</label>
-                <select name="actions">
-                    <option value="" disabled selected>Action Type</option>
-                    <option value="manager">Manager</option>
-                    <option value="ospatar">Ospatar</option>
-                    <option value="bucatar">Bucatar</option>
-                </select>
+                <div class="select-action">
+                    <label for="actions">Actions</label>
+                    <select name="actions" id="action">
+                        <option value="" disabled selected>Action Type</option>
+                        <option value="login">Login</option>
+                    </select>
+                    <span class="display-error"></span>
+                </div>
             </div>
             <div class="menu-item">
                 <h4 class="sort-by">Sort by:</h4>
                 <div class="item-container checkbox-container">
                     <label class="radiobox-container">ASC
-                        <input type="radio" checked="checked" name="radio">
+                        <input type="radio" checked="checked" name="sort_order" id="sort_order">
                         <span class="checkmark"></span>
                     </label>
                     <label class="radiobox-container">DESC
-                        <input type="radio" name="radio">
+                        <input type="radio" name="sort_order" id="sort_order">
                         <span class="checkmark"></span>
                     </label>
                 </div>
@@ -64,14 +71,14 @@ User::check_page();
             <div class="menu-item">
                 <div class="item-container">
                     <label for="date-from">Date From</label>
-                    <input class="date-input" type="date" name="date-from">
+                    <input class="date-input" type="datetime-local" name="date-from" id="date-from">
                 </div>
                 <div class="item-container">
                     <label for="date-to">Date To</label>
-                    <input class="date-input" type="date" name="date-to">
+                    <input class="date-input" type="datetime-local" name="date-to" id="date-to">
                 </div>
             </div>
-            <button>Apply</button>
+            <button class="button_get_logs">Apply</button>
         </div>
         <div class="container_custom">
             <div class="go-loader-wrapper">
@@ -85,23 +92,10 @@ User::check_page();
                     <th class="table-title">Details</th>
                     <th class="table-title">Date</th>
                 </tr>
-                <tr class="table-rows">
-                    <td class="table-cell">1</td>
-                    <td class="table-cell">user3 user3</td>
-                    <td class="table-cell">select</td>
-                    <td class="table-cell">SELECT * FROM 'invoice' WHERE...</td>
-                    <td class="table-cell">2021-11-23 23:01:20</td>
-                </tr>
-                <tr class="table-rows">
-                    <td class="table-cell">1</td>
-                    <td class="table-cell">user3 user3</td>
-                    <td class="table-cell">select</td>
-                    <td class="table-cell">SELECT * FROM 'invoice' WHERE...</td>
-                    <td class="table-cell">2021-11-23 23:01:20</td>
-                </tr>
             </table>
         </div>
     </div>
 </body>
 <?php include './foo.php'; ?>
+<script src="./js/logs.js"></script>
 </html>

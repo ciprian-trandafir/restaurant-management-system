@@ -26,7 +26,7 @@ class DbUtils
 
             return $conn;
         } catch (PDOException $e) {
-            @file_put_contents('error_log', @file_get_contents('error_log') . $e->getMessage() . "\n");
+            @file_put_contents('error_log', @file_get_contents('error_log') .date('Y-m-d H:i:s').' '. $e->getMessage() . "\n");
             die('Eroare DB.');
         }
     }
