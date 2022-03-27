@@ -27,7 +27,7 @@ User::check_page();
             </div>
             <div class="content">
                 <h4 class="text">Products that ran out of stock</h4>
-                <p class="number">4</p>
+                <p class="number"><?php echo count(Inventory::loadInventory(false, 0 , 0)); ?></p>
                 <div class="divider"></div>
                 <span class="note">Lorem Ipsum dolores</span>
             </div>

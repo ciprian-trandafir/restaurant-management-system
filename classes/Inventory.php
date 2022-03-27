@@ -45,11 +45,13 @@ class Inventory
     public static function loadInventory($name = false, $stock_from = false, $stock_to = false)
     {
         $sql = 'SELECT * FROM `inventory`';
-        if ($stock_from && $stock_to) {
+        if ($stock_from == $stock_to) {
+            $sql .= " WHERE `stock` = $stock_to";
+        } elseif ($stock_from && $stock_to) {
             $sql .= " WHERE `stock` > $stock_from AND `stock` < $stock_to";
-        } else if ($stock_from) {
+        } elseif ($stock_from) {
             $sql .= " WHERE `stock` > $stock_from";
-        } else if ($stock_to) {
+        } elseif ($stock_to) {
             $sql .= " WHERE `stock` < $stock_to";
         }
 
