@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
         <div class="sideScreen">
             <div class="sideContent">
                 <div class="imageContainer">
-                    <img src="assets/profile.jpg">
+                    <img src="assets/profile2.jpg">
                 </div>
                 <h1 class="sideTitle">
                     <?php echo $user['first_name'].' '.$user['last_name'] ?>
@@ -147,6 +147,6 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </body>
-<?php include './footer.php'; ?>
+<?php include './foo.php'; ?>
 <script src="./js/my_account.js"></script>
 </html>

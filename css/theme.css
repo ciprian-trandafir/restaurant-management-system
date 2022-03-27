@@ -33,6 +33,7 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
     position: relative;
+    height: 100vh;
 }
 
 ol, ul {
@@ -60,10 +61,13 @@ a {
     color: rgba(0, 0, 0, 0.6);
 }
 
+.page {
+    padding-top: 92px;
+}
+
 .display-error {
     color: #FF0000;
     font-size: 12px;
-    padding: 0 0 0 0.8rem;
 }
 
 .input-error {
@@ -92,6 +96,10 @@ a {
     color: rgba(0, 0, 0, 0.6);
     background: #fff;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.11);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
 }
 
 .footer {
@@ -99,10 +107,13 @@ a {
     color: rgba(0, 0, 0, 0.6);
     background: #fff;
     box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.11);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .container {
-    width: 800px;
+    width: 750px !important;
     margin: 0 auto;
     padding: 15px;
     display: flex;

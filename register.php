@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
     <?php include './head.php'; ?>
 </head>
 <body>
-    <div class="page">
+    <div class="page-register">
         <div class="mainScreen">
             <div class="mainContent">
                 <form method="post" id="register_form">

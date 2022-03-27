@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
     <?php include './head.php'; ?>
 </head>
 <body>
-    <div class="page">
+    <div class="page-login">
         <div class="sideScreen">
             <div class="sideContent">
                 <h1 class="sideTitle">

@@ -1,6 +1,6 @@
 /* REGISTER PAGE */
 
-.page {
+.page-register {
 	display: flex;
 	height: 100vh;
 }
@@ -112,7 +112,7 @@
 }
 
 .inputContainer input {
-	width: 89%;
+	width: 100%;
     padding: 0.8rem 1rem;
     background: #f3f3f3;
     border: none;
