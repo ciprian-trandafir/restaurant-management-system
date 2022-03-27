@@ -38,4 +38,10 @@ class DbUtils
             die('Eroare DB.');
         }
     }
+
+    public static function deleteRow($id, $table)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare("DELETE FROM `$table` WHERE `ID` = $id");
+        $stmt->execute();
+    }
 }

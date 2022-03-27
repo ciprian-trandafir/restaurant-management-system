@@ -2,28 +2,6 @@
 
 class Log
 {
-    private $ID;
-    private $ID_user;
-    private $action;
-    private $details;
-    private $date;
-
-    /**
-     * @param $ID
-     * @param $ID_user
-     * @param $action
-     * @param $details
-     * @param $date
-     */
-    public function __construct($ID, $ID_user, $action, $details, $date)
-    {
-        $this->ID = $ID;
-        $this->ID_user = $ID_user;
-        $this->action = $action;
-        $this->details = $details;
-        $this->date = $date;
-    }
-
     public static function insertLog($ID_user, $action, $details): bool
     {
         $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO `logs`(`ID_user`, `action`, `details`) VALUES (?, ?, ?)");

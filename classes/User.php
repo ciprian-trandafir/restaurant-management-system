@@ -9,14 +9,16 @@ class User
     private $access_level;
     private $active;
 
-    public function __construct($id = false) {
+    public function __construct($id = false)
+    {
         if ($id) {
             $this->id = $id;
             $this->load_profile($id);
         }
     }
 
-    private function load_profile($id) {
+    private function load_profile($id)
+    {
         $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($id));
         $user = $stmt->fetch();
