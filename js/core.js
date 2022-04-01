@@ -15,7 +15,7 @@ $('.management_inner')
     });
 
 $('body')
-    .on('change', 'input', function() {
+    .on('keyup', 'input', function() {
         $(this).removeClass('input-error');
         $(this).closest('div').find('.display-error').text('');
     })

@@ -4,6 +4,10 @@
     padding-top: 92px;
 }
 
+a {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
 /* SIDE SCREEN */
 
 .custom_card {

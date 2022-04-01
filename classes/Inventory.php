@@ -30,22 +30,37 @@ class Inventory
         $this->date_upd = $inventory['date_upd'];
     }
 
+    public static function getByNameAndMeasureUnit($product_name, $measure_unit)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `inventory` WHERE `product` = ? AND `measure` = ?");
+        $stmt->execute(array($product_name, $measure_unit));
+        return $stmt->fetch();
+    }
+
+    public static function insertInventory($product_name, $stock, $price, $measure_unit)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO `inventory`(`product`, `stock`, `measure`, `price`, `date_upd`) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP())");
+        $stmt->execute(array($product_name, $stock, $measure_unit, $price));
+
+        return DbUtils::getInstance()->lastInsertId();
+    }
+
     public static function updateStock($id, $stock)
     {
-        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `stock` = ? WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `stock` = ?, `date_upd` = CURRENT_TIMESTAMP() WHERE `ID` = ?");
         $stmt->execute(array($stock, $id));
     }
 
     public static function updatePrice($id, $price)
     {
-        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `price` = ? WHERE `ID` = ?");
+        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `price` = ?, `date_upd` = CURRENT_TIMESTAMP() WHERE `ID` = ?");
         $stmt->execute(array($price, $id));
     }
 
     public static function loadInventory($name = false, $stock_from = false, $stock_to = false)
     {
         $sql = 'SELECT * FROM `inventory`';
-        if ($stock_from == $stock_to) {
+        if ($stock_from == $stock_to && $stock_to !== false && $stock_from !== false) {
             $sql .= " WHERE `stock` = $stock_to";
         } elseif ($stock_from && $stock_to) {
             $sql .= " WHERE `stock` > $stock_from AND `stock` < $stock_to";
@@ -67,7 +82,7 @@ class Inventory
             $sql .= " `product` LIKE '%".$name."%'";
         }
 
-        $stmt = DbUtils::getInstance(true)->prepare($sql);
+        $stmt = DbUtils::getInstance(true)->prepare($sql.' ORDER BY `ID` DESC');
         $stmt->execute();
 
         return $stmt->fetchAll();

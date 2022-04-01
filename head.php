@@ -1,4 +1,4 @@
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+<link rel="icon" type="image/x-icon" href="assets/logo.png">
 <link rel="stylesheet" type="text/css" href="css/theme.css">
 <link rel="stylesheet" type="text/css" href="css/preset.min.css">
 <link rel="stylesheet" type="text/css" href="css/loading.css">

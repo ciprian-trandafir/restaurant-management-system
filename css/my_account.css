@@ -3,6 +3,9 @@
     height: 100vh;
 }
 
+a {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
 
 /* SIDE SCREEN */
 

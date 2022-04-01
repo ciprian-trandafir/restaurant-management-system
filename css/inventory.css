@@ -1,14 +1,36 @@
 .page {
     display: flex;
-    height: 100vh;
-    padding-top: 92px;
+    height: 100%;
+    width: 100%;
 }
 
 a {
     color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* SIDE SCREEN */
+.page a,
+#inventory_import_csv a {
+    color: #FFF !important;
+}
+
+.table-rows:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.edit-product-header,
+.add-product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-product-clear,
+.add-product-clear {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
 
 select {
     width: 100%;
@@ -37,25 +59,6 @@ select:focus {
     outline: none;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 1rem 4rem;
-    border-radius: 5px;
-    background: #37383d;
-    color: #fff;
-    border: none;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    transition: all .3s ease;
-}
-
-button:hover {
-    cursor: pointer;
-    background: rgba(55, 56, 61, .85);
-}
-
 label, .sort-by {
     display: block;
     margin-bottom: 0.25rem;
@@ -67,10 +70,8 @@ label, .sort-by {
     width: 20%;
     padding: 1.2rem 1.6rem;
     background: #c2c2c2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 90.5vh;
+    overflow: auto;
     position: fixed;
 }
 
@@ -85,13 +86,6 @@ label, .sort-by {
 .container_custom {
     width: 100%;
     margin-left: 20%;
-}
-
-.sideMenuInner {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 80%;
 }
 
 /*.checkbox-container {
@@ -169,7 +163,7 @@ label, .sort-by {
     background: white;
 }
 
-.log-table {
+.inventory-table {
     width: 100%;
     text-align: left;
 }
@@ -184,7 +178,7 @@ label, .sort-by {
     background: #fff;
     top: 0;
     z-index: 2;
-    box-shadow: 0px -5px 10px grey;
+    box-shadow: 0 -5px 15px 0 grey;
 }
 
 .table-rows {
@@ -200,4 +194,135 @@ label, .sort-by {
 
 .table-cell {
     padding: .6rem 1rem;
+}
+
+.categoryTitle {
+    color: #fff;
+    font-weight: 500;
+    margin: 0 0 .25rem;
+    font-size: .85rem;
+    text-transform: uppercase;
+}
+
+.categoryContainer:not(:last-child) {
+    margin-bottom: 2em;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background: #fff;
+}
+
+.inputContainer {
+    display: block;
+    margin: 1rem auto;
+    width: 100%;
+}
+
+.inputContainer input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.75rem 0.75rem;
+    background: #f3f3f3;
+    border: none;
+    color: #757575;
+    border-radius: 5px;
+}
+
+.inputContainer input:focus {
+    outline: none;
+}
+
+.majorBtn {
+    display: block;
+    padding: .85rem 1rem;
+    border-radius: 5px;
+    background: #37383d;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+    width: 48%;
+    text-align: center;
+}
+
+.btnFullWidth {
+    width: 100% !important;
+    margin-top: 2%;
+}
+
+.majorBtn:hover {
+    cursor: pointer;
+    background: rgba(55, 56, 61, .85);
+}
+
+.button_custom {
+    display: block;
+    padding: .6rem 4rem;
+    border-radius: 5px;
+    background: #37383d;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+    width: 100%;
+}
+
+.button_custom:hover {
+    cursor: pointer;
+    background: rgba(55, 56, 61, .85);
+}
+
+.row-selected {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.btnSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnContainer {
+    bottom: 10%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.inputContainerMultiple {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputContainerChild {
+    width: 45%;
+}
+
+.product_image {
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    border-radius: 3px;
+/*    background: rgba(0, 0, 0, 0.1);*/
+}
+
+.product_img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#import_csv_form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#import_csv_form .form-group .majorBtn {
+    margin-top: 2em;
 }

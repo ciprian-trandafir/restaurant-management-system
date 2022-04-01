@@ -9,7 +9,8 @@
             $user = new User($_SESSION['id_user']);
             $current_location = Link::get_current_location();
             if ($user->getAccessLevel() == 2) {
-                $current_location == 'logs' ? $class = 'item-selected' : $class = '';
+                $current_location == 'logs' ? $class_logs = 'item-selected' : $class_logs = '';
+                $current_location == 'inventory' ? $class_inventory = 'item-selected' : $class_inventory = '';
                 echo '<div class="management">
                     <div class="management_inner">
                         <div class="management_main">
@@ -18,9 +19,14 @@
                             </span>
                         </div>
                         <div class="management_actions">
-                            <div class="management_action '.$class.'">
+                            <div class="management_action '.$class_logs.'">
                                 <a href="'.Link::getLink('logs').'">
-                                    Loguri
+                                    Logs
+                                </a>
+                            </div>
+                            <div class="management_action '.$class_inventory.'">
+                                <a href="'.Link::getLink('inventory').'">
+                                    Inventory
                                 </a>
                             </div>
                         </div>
@@ -32,9 +38,6 @@
             <div class="my-account-inner">
                 <span class="material-icons">
                     person
-                </span>
-                <span>
-                    My account
                 </span>
             </div>
             <div class="my-account-preview">
@@ -56,7 +59,7 @@
                 ?>">
                     <div class="my-account-preview-href <?php if ($current_location == 'my_account') echo 'item-selected'?>">
                         <span>
-                            Contul meu
+                            My Account
                         </span>
                     </div>
                 </a>

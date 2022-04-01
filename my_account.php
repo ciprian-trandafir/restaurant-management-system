@@ -1,7 +1,6 @@
 <?php
 
-foreach (glob('classes/' . "*.php") as $file)
-{
+foreach (glob('classes/' . "*.php") as $file) {
     include_once $file;
 }
 
@@ -44,7 +43,7 @@ if (isset($_POST['submit'])) {
         <div class="sideScreen">
             <div class="sideContent">
                 <div class="imageContainer">
-                    <img src="assets/profile2.jpg">
+                    <img src="assets/profile.jpg">
                 </div>
                 <h1 class="sideTitle">
                     <?php echo $user['first_name'].' '.$user['last_name'] ?>
@@ -84,8 +83,8 @@ if (isset($_POST['submit'])) {
                 </div>
                 <form method="post">
                     <div class="inputContainer">
-                        <input class="spacer-right" type="text" name="first-name" placeholder="Prenume" value="<?php if (isset($_POST['first-name'])) echo $_POST['first-name']; else echo $user['first_name'];?>">
-                        <input type="text" name="last-name" placeholder="Nume" value="<?php if (isset($_POST['last-name'])) echo $_POST['last-name']; else echo $user['last_name'];?>">
+                        <input class="spacer-right" type="text" name="first-name" placeholder="First name" value="<?php if (isset($_POST['first-name'])) echo $_POST['first-name']; else echo $user['first_name'];?>">
+                        <input type="text" name="last-name" placeholder="Last Name" value="<?php if (isset($_POST['last-name'])) echo $_POST['last-name']; else echo $user['last_name'];?>">
                     </div>
                     <div class="inputContainer">
                         <div class="inputContainer_inner">
