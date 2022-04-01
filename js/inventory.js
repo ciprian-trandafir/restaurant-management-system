@@ -11,7 +11,7 @@ let $edit_price = $('.editProduct #edit-price');
 let $loading = $('.go-loader-wrapper');
 
 $('body')
-    .on('click', '.addProductBtn', function() {
+    .on('dblclick', '.addProductBtn', function() {
         let do_ajax = true;
 
         if (!$product_name.val()) {
@@ -64,7 +64,7 @@ $('body')
             })
         }
     })
-    .on('click', '.editProductBtn', function() {
+    .on('dblclick', '.editProductBtn', function() {
         let do_ajax = true;
 
         if (!$edit_id.val()) {
@@ -106,7 +106,7 @@ $('body')
             }
         }
     })
-    .on('click', '.deleteProductBtn', function() {
+    .on('dblclick', '.deleteProductBtn', function() {
         if (!$edit_id.val()) {
             alert('Please select a product to delete!');
         } else {
