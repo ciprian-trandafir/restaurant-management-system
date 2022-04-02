@@ -21,13 +21,13 @@ class User
     {
         $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($id));
-        $user = $stmt->fetch();
+        $user = $stmt->fetchAll();
 
-        $this->first_name = $user['first_name'];
-        $this->last_name = $user['last_name'];
-        $this->email = $user['email'];
-        $this->access_level = $user['access_level'];
-        $this->active = $user['active'];
+        $this->first_name = $user[0]['first_name'];
+        $this->last_name = $user[0]['last_name'];
+        $this->email = $user[0]['email'];
+        $this->access_level = $user[0]['access_level'];
+        $this->active = $user[0]['active'];
     }
 
     public static function checkEmail($email, $id_user = false): bool
@@ -91,6 +91,12 @@ class User
         $stmt->execute(array($email, $first_name, $last_name, $id));
     }
 
+    public static function updateRoleAndStatus($id, $role, $status)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `users` SET `access_level` = ?, `active` = ? WHERE `ID` = ?");
+        $stmt->execute(array($role, $status, $id));
+    }
+
     public static function logout()
     {
         session_start();
@@ -110,11 +116,15 @@ class User
         return false;
     }
 
-    public static function check_page() {
+    public static function check_page($security = false) {
         session_start();
 
         if (!isset($_SESSION['id_user'])) {
             User::logout();
+        }
+
+        if ($security) {
+            User::checkAccessLevel($_SESSION['id_user'], $security);
         }
     }
 
@@ -122,14 +132,14 @@ class User
     {
         $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users` WHERE `ID` = ?");
         $stmt->execute(array($id));
-        $user = $stmt->fetch();
+        $user = $stmt->fetchAll();
 
         $data = [];
-        $data['ID'] = $user['ID'];
-        $data['first_name'] = $user['first_name'];
-        $data['last_name'] = $user['last_name'];
-        $data['email'] = $user['email'];
-        $data['access_level'] = $user['access_level'];
+        $data['ID'] = $user[0]['ID'];
+        $data['first_name'] = $user[0]['first_name'];
+        $data['last_name'] = $user[0]['last_name'];
+        $data['email'] = $user[0]['email'];
+        $data['access_level'] = $user[0]['access_level'];
 
         return $data;
     }
@@ -159,20 +169,16 @@ class User
 
     public static function getUsers()
     {
-        $stmt = DbUtils::getInstance(true)->prepare("SELECT `ID`, `first_name`, `last_name` FROM `users`");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users`");
         $stmt->execute();
-        $users = $stmt->fetchAll();
+        return $stmt->fetchAll();
+    }
 
-        $output = [];
-        foreach ($users as $user) {
-            $output[] = [
-                'ID' => $user['ID'],
-                'first_name' => $user['first_name'],
-                'last_name' => $user['last_name']
-            ];
-        }
-
-        return $output;
+    public static function getLastLogin($id)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare('SELECT * FROM `logs` WHERE `action` = "login" AND `ID_user` = ? ORDER BY `ID` DESC LIMIT 1');
+        $stmt->execute([$id]);
+        return $stmt->fetchAll();
     }
 
     /**

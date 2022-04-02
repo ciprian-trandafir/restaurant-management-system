@@ -1,14 +1,12 @@
 .page {
     display: table;
     margin: 0 auto;
-    padding-top: 92px;
+    height: 100vh;
 }
 
 a {
     color: rgba(0, 0, 0, 0.6) !important;
 }
-
-/* SIDE SCREEN */
 
 .custom_card {
     display: flex;

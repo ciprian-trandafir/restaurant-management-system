@@ -7,9 +7,6 @@ a {
     color: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* SIDE SCREEN */
-
-
 .sideScreen {
     flex: 1 1 35%;
     background: url('../assets/sideBG.jpg') no-repeat fixed;

@@ -1,12 +1,7 @@
-/* REGISTER PAGE */
-
 .page-register {
 	display: flex;
 	height: 100vh;
 }
-
-
-/* SIDE SCREEN */
 
 a:hover {
     color: rgba(255, 255, 255, 0.8) !important;
@@ -61,16 +56,13 @@ a:hover {
     font-size: 12px;
     letter-spacing: .8px;
     transition: all .3s ease;
+    text-align: center;
 }
 
 .sideButton:hover {
 	background: rgba(255, 255, 255, .1);
 	cursor: pointer;
 }
-
-
-/* MAIN SCREEN */
-
 
 .mainScreen {
 	flex: 1 1 65%;

@@ -1,39 +1,16 @@
 .page {
-    display: flex;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 a {
     color: rgba(0, 0, 0, 0.6) !important;
 }
 
-.page a,
-#inventory_import_csv a {
-    color: #FFF !important;
-}
-
-.table-rows:hover {
-    background: rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.edit-product-header,
-.add-product-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.edit-product-clear,
-.add-product-clear {
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-}
-
 select {
-    width: 100%;
+    width: 65%;
     padding: 0.75rem 0.75rem;
     background: #f3f3f3;
     border: none;
@@ -63,19 +40,14 @@ label, .sort-by {
     display: block;
     margin-bottom: 0.25rem;
     font-size: 13px;
-    color: #fff;
 }
 
 .sideMenu {
-    width: 20%;
+    width: 25%;
     padding: 1.2rem 1.6rem;
-    background: #c2c2c2;
-    height: calc(100vh - 92px);
-    overflow: auto;
     position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    background: #c2c2c2;
+    height: 100vh;
 }
 
 .menu-item {
@@ -86,14 +58,29 @@ label, .sort-by {
     margin-bottom: 1rem;
 }
 
-.container_custom {
-    width: 100%;
-    margin-left: 20%;
+.container1 {
+    width: 50%;
+    padding: 0 1rem 0 0;
+    height: 100%;
+}
+.container2 {
+    width: 50%;
+    padding: 0 0 0 1rem;
+    height: 100%;
 }
 
+.ingredients-table,
 .inventory-table {
     width: 100%;
     text-align: left;
+    margin-top: 1.6rem;
+}
+
+.inventory-table-wrapper,
+.ingredients-table-wrapper {
+    max-height: 20em;
+    min-height: 20em;
+    overflow: auto;
 }
 
 .table-headers {
@@ -106,7 +93,7 @@ label, .sort-by {
     background: #fff;
     top: 0;
     z-index: 2;
-    box-shadow: 0 -5px 15px 0 grey;
+    box-shadow: 0 3px 6px -5px grey;
 }
 
 .table-rows {
@@ -114,6 +101,15 @@ label, .sort-by {
     border-width: 0 0 2px 0;
     font-size: 14px;
     font-weight: 400;
+}
+
+.table-rows:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.row-selected {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .table-title {
@@ -125,21 +121,16 @@ label, .sort-by {
 }
 
 .categoryTitle {
-    color: #fff;
     font-weight: 500;
-    margin: 0 0 .25rem;
+    margin: 1rem 0 .25rem;
     font-size: .85rem;
     text-transform: uppercase;
 }
 
-.categoryContainer:not(:last-child) {
-    margin-bottom: 2em;
-}
-
 .divider {
-    width: 100%;
-    height: 2px;
-    background: #fff;
+    width: 25%;
+    height: 1px;
+    background: #000;
 }
 
 .inputContainer {
@@ -150,7 +141,7 @@ label, .sort-by {
 
 .inputContainer input {
     box-sizing: border-box;
-    width: 100%;
+    width: 65%;
     padding: 0.75rem 0.75rem;
     background: #f3f3f3;
     border: none;
@@ -167,7 +158,6 @@ label, .sort-by {
     padding: .85rem 1rem;
     border-radius: 5px;
     background: #37383d;
-    color: #fff;
     border: none;
     font-size: 12px;
     text-transform: uppercase;
@@ -187,13 +177,13 @@ label, .sort-by {
     background: rgba(55, 56, 61, .85);
 }
 
-.button_custom {
+.addProductBtn {
     display: block;
     padding: .6rem 4rem;
     border-radius: 5px;
     background: #37383d;
-    color: #fff;
     border: none;
+    color: #fff;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .8px;
@@ -201,23 +191,9 @@ label, .sort-by {
     width: 100%;
 }
 
-.button_custom:hover {
+.addProductBtn:hover, .smallBtn:hover {
     cursor: pointer;
     background: rgba(55, 56, 61, .85);
-}
-
-.row-selected {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.deleteProductBtn {
-    background: transparent;
-    background: rgba(177, 56, 56, 1) !important;
-    border: 2px solid #b13838 !important;
-}
-
-.deleteProductBtn:hover {
-    background: rgba(177, 56, 56, .85) !important;
 }
 
 .btnSection {
@@ -226,47 +202,94 @@ label, .sort-by {
 }
 
 .btnContainer {
+    position: absolute;
     bottom: 10%;
-    width: 100%;
+    width: calc(100% - 1.6rem*2);
     box-sizing: border-box;
 }
 
-.inputContainerMultiple {
+.tableContainer {
     display: flex;
-    justify-content: space-between;
-}
-
-.inputContainerChild {
-    width: 45%;
-}
-
-.product_image {
-    overflow: hidden;
-    width: 45px;
-    height: 45px;
-    border-radius: 3px;
-/*    background: rgba(0, 0, 0, 0.1);*/
-}
-
-.product_img {
-    object-fit: cover;
+    flex-direction: column;
     width: 100%;
-    height: 100%;
+    justify-content: center;
 }
 
-#import_csv_form .form-group {
+.containers {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
+}
+
+.containersWrapper {
+    padding: 0 5%;
+}
+
+.smallBtn {
+    padding: 0.25rem 4rem;
+    border-radius: 5px;
+    background: #37383d;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+    width: 30%;
+    float: right;
+}
+
+.deleteBtn {
+    background: transparent;
+    background: rgba(177, 56, 56, 1);
+    border: 2px solid #b13838;
+}
+
+.deleteBtn:hover {
+    background: rgba(177, 56, 56, .85);
+}
+
+.d-flex {
+    display: flex;
+}
+
+.topPanel {
+    background: #37383d;
+    display: flex;
+    width: 100%;
     justify-content: space-between;
+    margin-bottom: 1rem;
+    align-items: center;
+    padding: 1rem 5%;
 }
 
-#import_csv_form .form-group .majorBtn {
-    margin-top: 2em;
+.infoText {
+    font-size: 15px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #E4CC37;
 }
 
-.categoryContainers {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2em;
+.infoValue {
+    padding-left: .25rem;
+    font-weight: 300;
+    color: #fff;
+}
+
+.backBtn {
+    padding: .75rem 4rem;
+    max-height: 3rem;
+    border-radius: 5px;
+    background: #E4CC37;
+    border: none;
+    color: #37383d;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+    width: 30%;
+    text-align: center;
+}
+
+.between {
+    justify-content: space-between;
 }

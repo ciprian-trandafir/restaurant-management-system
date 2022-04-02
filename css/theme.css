@@ -90,6 +90,11 @@ a {
     border: 1px solid #f44336;
 }
 
+.confirmation_partial {
+    background: #fffbd3;
+    border: solid 1px #fab000;
+}
+
 .header {
     z-index: 999;
     color: rgba(0, 0, 0, 0.6);
@@ -202,4 +207,8 @@ input:disabled {
 .item-selected {
     background: rgba(0, 0, 0, 0.05);
     pointer-events: none;
+}
+
+.btn:disabled {
+    cursor: not-allowed;
 }

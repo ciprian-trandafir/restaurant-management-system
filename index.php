@@ -42,8 +42,7 @@ User::check_page();
                 <span class="note">Lorem Ipsum dolores</span>
             </div>
         </div>
-        <button class="button">Refresh</button>
-        <!-- <img src="https://media.discordapp.net/attachments/513481872106455042/953251597184548964/HTML520dashboard20demo20of20Smart20Theme.png"> -->
+        <button class="button home_refresh">Refresh</button>
     </div>
 </body>
 <?php include './footer.php'; ?>

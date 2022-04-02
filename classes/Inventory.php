@@ -21,13 +21,13 @@ class Inventory
     {
         $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `inventory` WHERE `ID` = ?");
         $stmt->execute(array($id));
-        $inventory = $stmt->fetch();
+        $inventory = $stmt->fetchAll();
 
-        $this->product = $inventory['product'];
-        $this->stock = $inventory['stock'];
-        $this->measure = $inventory['measure'];
-        $this->price = $inventory['price'];
-        $this->date_upd = $inventory['date_upd'];
+        $this->product = $inventory[0]['product'];
+        $this->stock = $inventory[0]['stock'];
+        $this->measure = $inventory[0]['measure'];
+        $this->price = $inventory[0]['price'];
+        $this->date_upd = $inventory[0]['date_upd'];
     }
 
     public static function getByNameAndMeasureUnit($product_name, $measure_unit)
@@ -42,19 +42,30 @@ class Inventory
         $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO `inventory`(`product`, `stock`, `measure`, `price`, `date_upd`) VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP())");
         $stmt->execute(array($product_name, $stock, $measure_unit, $price));
 
-        return DbUtils::getInstance()->lastInsertId();
+        $inserted_id = DbUtils::getInstance()->lastInsertId();
+
+        //insert log
+        Log::insertLog($_SESSION['id_user'], 'insert inventory', 'inserted id '.$inserted_id);
+
+        return $inserted_id;
     }
 
     public static function updateStock($id, $stock)
     {
         $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `stock` = ?, `date_upd` = CURRENT_TIMESTAMP() WHERE `ID` = ?");
         $stmt->execute(array($stock, $id));
+
+        //insert log
+        Log::insertLog($_SESSION['id_user'], 'update inventory', 'updated stock - id '.$id);
     }
 
     public static function updatePrice($id, $price)
     {
         $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `price` = ?, `date_upd` = CURRENT_TIMESTAMP() WHERE `ID` = ?");
         $stmt->execute(array($price, $id));
+
+        //insert log
+        Log::insertLog($_SESSION['id_user'], 'update inventory', 'updated price - id '.$id);
     }
 
     public static function loadInventory($name = false, $stock_from = false, $stock_to = false)

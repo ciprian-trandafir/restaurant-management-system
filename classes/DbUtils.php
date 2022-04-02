@@ -41,6 +41,24 @@ class DbUtils
 
     public static function deleteRow($id, $table)
     {
+        //insert log
+        switch($table) {
+            case 'recipes_ingredients':
+                $stmt = DbUtils::getInstance(true)->prepare("SELECT `id_recipe` FROM `recipes_ingredients` WHERE `ID` = ?");
+                $stmt->execute(array($id));
+                $ingredient = $stmt->fetchAll();
+
+                Log::insertLog($_SESSION['id_user'], 'delete', 'deleted ingredient with id '.$id.' from recipe '.$ingredient[0]['id_recipe']);
+                break;
+            case 'inventory':
+                $inventory = new Inventory($id);
+                Log::insertLog($_SESSION['id_user'], 'delete', 'deleted inventory product with id '.$id.' and name '.$inventory->getProduct());
+                break;
+            default:
+                break;
+        }
+
+        //delete row
         $stmt = DbUtils::getInstance(true)->prepare("DELETE FROM `$table` WHERE `ID` = $id");
         $stmt->execute();
     }

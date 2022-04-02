@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
             <div class="mainContent">
                 <form method="post" id="register_form">
                     <h1 class="mainTitle">
-                        Inregistrare
+                        Register
                     </h1>
                     <div class="mainSocials">
 
@@ -91,7 +91,7 @@ if (isset($_POST['submit'])) {
                         ?>
                     </div>
                     <div class="inputContainer">
-                        <input type="password" name="password" <?php if (isset($errors['password'])) echo 'class="input-error"'; ?> placeholder="Parola" value="<?php if (isset($_POST['password'])) echo $_POST['password'];?>" required>
+                        <input type="password" name="password" <?php if (isset($errors['password'])) echo 'class="input-error"'; ?> placeholder="Password" value="<?php if (isset($_POST['password'])) echo $_POST['password'];?>" required>
                         <?php
                         if (isset($errors['password'])) {
                             echo '<span class="display-error">'.$errors['password'].'</span>';
@@ -104,6 +104,7 @@ if (isset($_POST['submit'])) {
                             <option value="2" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 2) echo 'selected';?>>Manager</option>
                             <option value="1" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 1) echo 'selected';?>>Ospatar</option>
                             <option value="0" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 0) echo 'selected';?>>Bucatar</option>
+                            <option value="-1" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == -1) echo 'selected';?>>Client</option>
                         </select>
                         <?php
                         if (isset($errors['access-level'])) {
@@ -114,7 +115,7 @@ if (isset($_POST['submit'])) {
                     <!--<p class="forgotPassword">
                         Ti-ai uitat parola?
                     </p>-->
-                    <input type="submit" name="submit" class="mainButton" value="Înregistrare">
+                    <input type="submit" name="submit" class="mainButton" value="Register">
                 </form>
                 <?php
                     if ($successfully_registered) {
@@ -133,13 +134,13 @@ if (isset($_POST['submit'])) {
         <div class="sideScreen">
             <div class="sideContent">
                 <h1 class="sideTitle">
-                    Bun venit!
+                    Welcome!
                 </h1>
                 <p class="sideText">
-                    Introdu datele tale personale pentru a te înregistra
+                    Enter your personal data to register
                 </p>
                 <a class="sideButton" href="<?php echo Link::getLink('login') ?>">
-                    Autentificare
+                    Login
                 </a>
             </div>
         </div>

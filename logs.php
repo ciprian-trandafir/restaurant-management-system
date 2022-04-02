@@ -4,7 +4,7 @@ foreach (glob('classes/' . "*.php") as $file) {
     include_once $file;
 }
 
-User::check_page();
+User::check_page(2);
 
 ?>
 
@@ -44,6 +44,13 @@ User::check_page();
                             <select name="actions" id="action">
                                 <option value="" disabled selected>Action Type</option>
                                 <option value="login">Login</option>
+                                <option value="delete">Delete</option>
+                                <option value="insert inventory">Insert Inventory Product</option>
+                                <option value="update inventory">Update Inventory Product</option>
+                                <option value="insert recipe">Insert Recipe</option>
+                                <option value="update recipe">Update Recipe</option>
+                                <option value="insert ingredient">Insert Ingredient</option>
+                                <option value="update ingredient">Update Ingredient</option>
                             </select>
                             <span class="display-error"></span>
                         </div>
@@ -91,7 +98,6 @@ User::check_page();
                 <tr class="table-headers">
                     <th class="table-title">ID</th>
                     <th class="table-title">User</th>
-                    <th class="table-title">Action</th>
                     <th class="table-title">Details</th>
                     <th class="table-title">Date</th>
                 </tr>

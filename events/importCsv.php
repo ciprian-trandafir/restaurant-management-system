@@ -29,8 +29,8 @@ if (isset($_POST["import_csv_submit"])) {
 
             $header_passed = true;
         }
-
-        Link::redirect('inventory');
-        exit;
     }
 }
+
+Link::redirect('inventory');
+exit;

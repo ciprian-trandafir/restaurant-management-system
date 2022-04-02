@@ -51,6 +51,9 @@ if (isset($_POST['submit'])) {
                 <p class="sideText">
                     <?php
                     switch ($user['access_level']) {
+                        case -1:
+                            echo 'Client';
+                            break;
                         case 0:
                             echo 'Bucătar';
                             break;
@@ -71,7 +74,7 @@ if (isset($_POST['submit'])) {
                     <img class="headerImg" src="assets/information-security.png">
                     <div>
                         <h1 class="mainTitle">
-                            Informatii personale
+                            Personal Information
                         </h1>
                         <div class="mainSocials">
 
@@ -106,7 +109,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

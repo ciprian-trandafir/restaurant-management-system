@@ -36,7 +36,6 @@ if ($action === 'getLogs') {
         $output .= '<tr class="table-rows">
                     <td class="table-cell">'.$log['ID'].'</td>
                     <td class="table-cell">'.$log['first_name'].' '.$log['last_name'].'</td>
-                    <td class="table-cell">'.$log['action'].'</td>
                     <td class="table-cell">'.$log['details'].'</td>
                     <td class="table-cell">'.$log['date'].'</td>
                 </tr>';
@@ -86,6 +85,95 @@ if ($action === 'deleteInventory') {
     DbUtils::deleteRow($product_id, 'inventory');
 
     die(json_encode(['success' => true]));
+}
+
+if ($action === 'insertRecipe') {
+    $recipe_name = trim(htmlspecialchars($_POST['recipe_name']));
+    $price = trim(htmlspecialchars($_POST['price']));
+
+    $insert_id = Recipe::insertRecipe($recipe_name, $price);
+
+    $output = '<tr class="table-rows" data-id="'.$insert_id.'">
+                <td class="table-cell recipe_id">'.$insert_id.'</td>
+                <td class="table-cell">
+                    <div class="recipe_image">
+                        <img src="assets/recipe.png" class="recipe_img" alt="">
+                    </div>
+                </td>
+                <td class="table-cell recipe_name">'.$recipe_name.'</td>
+                <td class="table-cell recipe_price">'.$price.'</td>
+            </tr>';
+
+    die(json_encode(['response' => $output]));
+}
+
+if ($action === 'updateRecipe') {
+    $recipe_id = trim(htmlspecialchars($_POST['recipe_id']));
+    $name = trim(htmlspecialchars($_POST['name']));
+    $price = trim(htmlspecialchars($_POST['price']));
+
+    Recipe::editRecipe($recipe_id, $name, $price);
+
+    die(json_encode(['success' => true]));
+}
+
+if ($action === 'updateUser') {
+    $id_user = trim(htmlspecialchars($_POST['id_user']));
+    $role = trim(htmlspecialchars($_POST['role']));
+    $status = trim(htmlspecialchars($_POST['status']));
+
+    User::updateRoleAndStatus($id_user, $role, $status);
+
+    die(json_encode(['response' => true]));
+}
+
+if ($action === 'applyInventoryFilters') {
+    $filter = trim(htmlspecialchars($_POST['filter']));
+
+    $inventories = Inventory::loadInventory($filter);
+    $output = '';
+    foreach ($inventories as $inventory) {
+        $output .= '<tr class="table-rows" data-id="'.$inventory['ID'].'">
+                        <td class="table-cell">'.$inventory['ID'].'</td>
+                        <td class="table-cell product_name">'.$inventory['product'].'</td>
+                        <td class="table-cell">'.$inventory['stock'].'</td>
+                    </tr>';
+    }
+
+    die(json_encode(['response' => $output]));
+}
+
+if ($action === 'addIngredient') {
+    $recipe = trim(htmlspecialchars($_POST['recipe']));
+    $product_id = trim(htmlspecialchars($_POST['product_id']));
+    $product_name = trim(htmlspecialchars($_POST['product_name']));
+    $qty = trim(htmlspecialchars($_POST['qty']));
+
+    $insert_id = Recipe::addIngredient($recipe, $product_id, $qty);
+    $output = '<tr class="table-rows" data-id="'.$insert_id.'">
+                <td class="table-cell product_id">'.$product_id.'</td>
+                <td class="table-cell">'.$product_name.'</td>
+                <td class="table-cell product_qty">'.$qty.'</td>
+            </tr>';
+
+    die(json_encode(['response' => $output]));
+}
+
+if ($action === 'deleteIngredient') {
+    $ing_id = trim(htmlspecialchars($_POST['ing_id']));
+
+    DbUtils::deleteRow($ing_id, 'recipes_ingredients');
+
+    die(json_encode(['response' => true]));
+}
+
+if ($action === 'updateIngredientQty') {
+    $ing_id = trim(htmlspecialchars($_POST['ing_id']));
+    $qty = trim(htmlspecialchars($_POST['qty']));
+
+    Recipe::updateIngredientQty($ing_id, $qty);
+
+    die(json_encode(['response' => true]));
 }
 
 Link::redirect('index');

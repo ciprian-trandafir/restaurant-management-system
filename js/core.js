@@ -19,3 +19,6 @@ $('body')
         $(this).removeClass('input-error');
         $(this).closest('div').find('.display-error').text('');
     })
+    .on('click', '.home_refresh', function() {
+        location.reload();
+    })

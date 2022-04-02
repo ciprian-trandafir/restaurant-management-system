@@ -59,6 +59,8 @@ $('body')
                     $loading.fadeOut(200);
                     if (data.response) {
                         $('#changePasswordModal .confirmation_message').fadeIn(100);
+                        $('#changePasswordModal .button_update_password').attr('disabled', true);
+                        $('#changePasswordModal .modal-footer .btn-secondary').attr('disabled', true);
                         setTimeout(function () {
                             location.reload();
                         }, 3000);

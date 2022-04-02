@@ -4,7 +4,7 @@ foreach (glob('classes/' . "*.php") as $file) {
     include_once $file;
 }
 
-User::check_page();
+User::check_page(2);
 
 ?>
 
@@ -21,68 +21,70 @@ User::check_page();
 <?php include './header.php'; ?>
     <div class="page">
         <div class="sideMenu">
-            <div class="categoryContainer">
-                <h4 class="categoryTitle">Add Product</h4>
-                <div class="divider"></div>
-                <div class="category addProduct">
-                    <div class="inputContainer">
-                        <div class="add-product-header">
-                            <label for="product-name">Product Name</label>
-                            <span class="add-product-clear" title="Clear add product details">×</span>
-                        </div>
-                        <input type="text" name="product-name" id="product-name">
-                        <span class="display-error"></span>
-                    </div>
-                    <div class="inputContainer inputContainerMultiple">
-                        <div class="inputContainerChild">
-                            <label for="stock">Stock</label>
-                            <input type="number" name="stock" id="stock">
+            <div class="categoryContainers">
+                <div class="categoryContainer">
+                    <h4 class="categoryTitle">Add Product</h4>
+                    <div class="divider"></div>
+                    <div class="category addProduct">
+                        <div class="inputContainer">
+                            <div class="add-product-header">
+                                <label for="product-name">Product Name</label>
+                                <span class="add-product-clear" title="Clear add product details">×</span>
+                            </div>
+                            <input type="text" name="product-name" id="product-name">
                             <span class="display-error"></span>
                         </div>
-                        <div class="inputContainerChild">
-                            <label for="price">Price</label>
-                            <input type="number" id="price" name="price">
+                        <div class="inputContainer inputContainerMultiple">
+                            <div class="inputContainerChild">
+                                <label for="stock">Stock</label>
+                                <input type="number" min="0" name="stock" id="stock">
+                                <span class="display-error"></span>
+                            </div>
+                            <div class="inputContainerChild">
+                                <label for="price">Price</label>
+                                <input type="number" min="0" id="price" name="price">
+                                <span class="display-error"></span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <label for="measure_unit">Measure unit</label>
+                            <select name="measure_unit" id="measure_unit">
+                                <option value="" disabled selected>Select measure unit</option>
+                                <option value="l">L</option>
+                                <option value="buc">Pieces</option>
+                                <option value="kg">Kg</option>
+                            </select>
                             <span class="display-error"></span>
                         </div>
+                        <button class="addProductBtn button_custom">Add</button>
                     </div>
-                    <div class="menu-item">
-                        <label for="measure_unit">Measure unit</label>
-                        <select name="measure_unit" id="measure_unit">
-                            <option value="" disabled selected>Select measure unit</option>
-                            <option value="l">L</option>
-                            <option value="buc">Pieces</option>
-                            <option value="kg">Kg</option>
-                        </select>
-                        <span class="display-error"></span>
-                    </div>
-                    <button class="addProductBtn button_custom">Add</button>
                 </div>
-            </div>
-            <div class="categoryContainer">
-                <h4 class="categoryTitle">Edit Product</h4>
-                <div class="divider"></div>
-                <div class="category editProduct">
-                    <div class="inputContainer">
-                        <div class="edit-product-header">
-                            <label for="edit-product-name">Product Name</label>
-                            <span class="edit-product-clear" title="Clear edit product details">×</span>
+                <div class="categoryContainer">
+                    <h4 class="categoryTitle">Edit Product</h4>
+                    <div class="divider"></div>
+                    <div class="category editProduct">
+                        <div class="inputContainer">
+                            <div class="edit-product-header">
+                                <label for="edit-product-name">Product Name</label>
+                                <span class="edit-product-clear" title="Clear edit product details">×</span>
+                            </div>
+                            <input type="text" name="product-name" id="edit-product-name" disabled="disabled">
                         </div>
-                        <input type="text" name="product-name" id="edit-product-name" disabled="disabled">
+                        <div class="inputContainer inputContainerMultiple">
+                            <div class="inputContainerChild">
+                                <label for="edit-stock">Stock</label>
+                                <input type="number" min="0" name="edit-stock" id="edit-stock" disabled="disabled">
+                                <span class="display-error"></span>
+                            </div>
+                            <div class="inputContainerChild">
+                                <label for="edit-price">Price</label>
+                                <input type="number" min="0" id="edit-price" name="edit-price" disabled="disabled">
+                                <span class="display-error"></span>
+                            </div>
+                        </div>
+                        <input type="hidden" id="edit-id">
+                        <button class="editProductBtn button_custom">Save</button>
                     </div>
-                    <div class="inputContainer inputContainerMultiple">
-                        <div class="inputContainerChild">
-                            <label for="edit-stock">Stock</label>
-                            <input type="number" name="edit-stock" id="edit-stock" disabled="disabled">
-                            <span class="display-error"></span>
-                        </div>
-                        <div class="inputContainerChild">
-                            <label for="edit-price">Price</label>
-                            <input type="number" id="edit-price" name="edit-price" disabled="disabled">
-                            <span class="display-error"></span>
-                        </div>
-                    </div>
-                    <input type="hidden" id="edit-id">
-                    <button class="editProductBtn button_custom">Save</button>
                 </div>
             </div>
             <div class="btnContainer">

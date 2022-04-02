@@ -13,25 +13,6 @@ a {
     color: #FFF !important;
 }
 
-.table-rows:hover {
-    background: rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.edit-product-header,
-.add-product-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.edit-product-clear,
-.add-product-clear {
-    color: #fff;
-    font-size: 30px;
-    cursor: pointer;
-}
-
 select {
     width: 100%;
     padding: 0.75rem 0.75rem;
@@ -69,13 +50,10 @@ label, .sort-by {
 .sideMenu {
     width: 20%;
     padding: 1.2rem 1.6rem;
+    position: fixed;
     background: #c2c2c2;
     height: calc(100vh - 92px);
     overflow: auto;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .menu-item {
@@ -87,13 +65,22 @@ label, .sort-by {
 }
 
 .container_custom {
-    width: 100%;
+    width: 80%;
     margin-left: 20%;
 }
 
-.inventory-table {
+.recipe-table {
     width: 100%;
     text-align: left;
+}
+
+.row-selected {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table-rows:hover {
+    background: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .table-headers {
@@ -106,7 +93,7 @@ label, .sort-by {
     background: #fff;
     top: 0;
     z-index: 2;
-    box-shadow: 0 -5px 15px 0 grey;
+    box-shadow: 0px -5px 10px grey;
 }
 
 .table-rows {
@@ -127,18 +114,14 @@ label, .sort-by {
 .categoryTitle {
     color: #fff;
     font-weight: 500;
-    margin: 0 0 .25rem;
+    margin: 1rem 0 .25rem;
     font-size: .85rem;
     text-transform: uppercase;
 }
 
-.categoryContainer:not(:last-child) {
-    margin-bottom: 2em;
-}
-
 .divider {
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: #fff;
 }
 
@@ -165,10 +148,10 @@ label, .sort-by {
 .majorBtn {
     display: block;
     padding: .85rem 1rem;
+    border: 2px solid #37383d;
     border-radius: 5px;
     background: #37383d;
     color: #fff;
-    border: none;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .8px;
@@ -187,7 +170,42 @@ label, .sort-by {
     background: rgba(55, 56, 61, .85);
 }
 
-.button_custom {
+.edit-recipe-header,
+.add-recipe-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-recipe-clear,
+.add-recipe-clear {
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.addRecipeBtnSmall {
+    display: block;
+    padding: .6rem 1rem;
+    border-radius: 5px;
+    background: #37383d;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    transition: all .3s ease;
+    width: 48%;
+    text-align: center;
+}
+
+.addRecipeBtnSmall:hover {
+    cursor: pointer;
+    background: rgba(55, 56, 61, .85);
+}
+
+.addRecipeBtn,
+.editRecipeBtn {
     display: block;
     padding: .6rem 4rem;
     border-radius: 5px;
@@ -199,25 +217,13 @@ label, .sort-by {
     letter-spacing: .8px;
     transition: all .3s ease;
     width: 100%;
+    cursor: pointer;
 }
 
-.button_custom:hover {
+.addRecipeBtn:hover,
+.editRecipeBtn:hover{
     cursor: pointer;
     background: rgba(55, 56, 61, .85);
-}
-
-.row-selected {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.deleteProductBtn {
-    background: transparent;
-    background: rgba(177, 56, 56, 1) !important;
-    border: 2px solid #b13838 !important;
-}
-
-.deleteProductBtn:hover {
-    background: rgba(177, 56, 56, .85) !important;
 }
 
 .btnSection {
@@ -226,47 +232,31 @@ label, .sort-by {
 }
 
 .btnContainer {
-    bottom: 10%;
     width: 100%;
     box-sizing: border-box;
+    padding-top: 2em;
 }
 
-.inputContainerMultiple {
+.inputGroup {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-end;
 }
 
-.inputContainerChild {
-    width: 45%;
+.setWidth {
+    max-width: 48% !important;
+    margin-top: 0 !important;
 }
 
-.product_image {
+.recipe_image {
     overflow: hidden;
     width: 45px;
     height: 45px;
     border-radius: 3px;
-/*    background: rgba(0, 0, 0, 0.1);*/
+    /*    background: rgba(0, 0, 0, 0.1);*/
 }
 
-.product_img {
+.recipe_img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
-
-#import_csv_form .form-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-#import_csv_form .form-group .majorBtn {
-    margin-top: 2em;
-}
-
-.categoryContainers {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2em;
 }
