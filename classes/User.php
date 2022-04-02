@@ -108,8 +108,13 @@ class User
     public static function register($first_name, $last_name, $email, $password, $access_level): bool
     {
         if (!User::checkEmail($email)) {
-            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email, $access_level));
+            $active = 0;
+            if ($access_level == -1) {
+                $active = 1;
+            }
+
+            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`, `active`) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email, $access_level, $active));
             return true;
         }
 
