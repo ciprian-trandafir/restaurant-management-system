@@ -1,23 +1,34 @@
-<div class="customer_index">
+<div class="chef_index">
+    <div class="go-loader-wrapper">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
     <div class="recipes">
         <div class="row">
             <?php
-            $recipes = Recipe::loadRecipes(true);
-            foreach ($recipes as $recipe) {
-                echo '<div class="recipe" data-id="'.$recipe['ID'].'">
+            $pending_requests = KitchenRequest::getKitchenPendingRequests();
+            if (!count($pending_requests)) {
+                echo '<div class="no-results">
+                <span>There are no pending kitchen requests</span>
+            </div>';
+            }
+            foreach ($pending_requests as $request) {
+                $recipe = new Recipe($request['id_recipe']);
+                echo '<div class="recipe" data-id="'.$request['id_recipe'].'">
                 <div class="recipe_inner">
                     <div class="recipe_header">
                         <div class="recipe_image">
                             <img src="./assets/recipe.png" alt="" class="recipe_img">
                         </div>
+                        <span class="request_placed">'.$request['date_add'].'</span>
+                        <span class="request_id">'.$request['ID'].'</span>
                     </div>
                     <div class="recipe_body">
                         <div class="recipe_name">
-                            <span>'.$recipe['name'].'</span>
+                            <span>'.$recipe->getName().'</span>
                         </div>
-                        <div class="recipe_price">
-                            <span>'.$recipe['price'].' RON</span>
-                        </div>
+                    </div>
+                    <div class="recipe_footer">
+                        <button class="btn buttonKitchenRequestDone" data-id="'.$request['ID'].'">DONE</button>            
                     </div>
                 </div>
             </div>';

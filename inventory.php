@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 User::check_page(2);
@@ -104,7 +106,7 @@ User::check_page(2);
                     <th class="table-title">ID</th>
                     <th class="table-title">Picture</th>
                     <th class="table-title">Name</th>
-                    <th class="table-title">Stock</th>
+                    <th class="table-title">Stock (g)</th>
                     <th class="table-title">Measure</th>
                     <th class="table-title">Price (RON)</th>
                 </tr>

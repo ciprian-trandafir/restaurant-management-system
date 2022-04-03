@@ -83,11 +83,11 @@ class Recipe
         $this->ingredients = $stmt->fetchAll();
     }
 
-    public static function loadRecipes()
+    public static function loadRecipes($force = false)
     {
         $sql = "SELECT * FROM `recipes`";
 
-        if (isset($_COOKIE['recipeFilters'])) {
+        if (isset($_COOKIE['recipeFilters']) && !$force) {
             $filters = json_decode($_COOKIE['recipeFilters'], true);
 
             if ($filters['price_from'] == $filters['price_to'] && $filters['price_from'] !== '' && $filters['price_to'] !== '') {

@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 User::check_page(2);
@@ -74,7 +76,7 @@ if (!$recipe->getName()) {
                                 <tr class="table-headers">
                                     <th class="table-title">ID</th>
                                     <th class="table-title">Product</th>
-                                    <th class="table-title">Quantity</th>
+                                    <th class="table-title">Quantity (g)</th>
                                 </tr>
                                 <?php
                                 foreach ($recipe->getIngredients() as $ingredient) {
@@ -113,7 +115,7 @@ if (!$recipe->getName()) {
                                 <tr class="table-headers">
                                     <th class="table-title">ID</th>
                                     <th class="table-title">Name</th>
-                                    <th class="table-title">Available quantity</th>
+                                    <th class="table-title">Available quantity (g)</th>
                                 </tr>
                                 <?php
                                 $products = Inventory::loadInventory();

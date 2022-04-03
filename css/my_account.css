@@ -9,7 +9,7 @@ a {
 
 .sideScreen {
     flex: 1 1 35%;
-    background: url('../assets/sideBG.jpg') no-repeat fixed;
+    background: url('../assets/sideBG.jpg') no-repeat bottom;
     background-size: cover;
     margin: 0 auto;
     position: relative;
@@ -18,7 +18,7 @@ a {
 .sideContent {
     display: block;
     position: absolute;
-    top: 8%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
 }

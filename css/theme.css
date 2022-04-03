@@ -111,7 +111,7 @@ a {
     color: rgba(0, 0, 0, 0.6);
     background: #fff;
     box-shadow: 2px 0 5px 0 rgba(0, 0, 0, 0.11);
-    position: absolute;
+    position: fixed;
     width: 100%;
     bottom: 0;
 }
@@ -211,4 +211,11 @@ input:disabled {
 
 .btn:disabled {
     cursor: not-allowed;
+}
+
+.no-results {
+    background: #fffbd3;
+    border: solid 1px #fab000;
+    padding: 3em;
+    font-weight: 500;
 }

@@ -1,13 +1,18 @@
 .page {
-    display: table;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0 auto;
     height: 100vh;
+    width: 100%;
+    overflow: auto;
 }
 
 a {
     color: rgba(0, 0, 0, 0.6) !important;
 }
 
+/* MANAGER */
 .custom_card {
     display: flex;
     width: 540px;
@@ -15,6 +20,7 @@ a {
     align-items: center;
     padding: 1rem 2rem;
     margin: 1rem 2rem;
+    border-radius: 3px;
 }
 
 .stockCard {
@@ -51,7 +57,7 @@ a {
 .text {
     color: #fff;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.15rem;
     line-height: 2;
 }
 
@@ -75,7 +81,7 @@ a {
 }
 
 .button {
-    width: 90.4%;
+    width: 540px;
     align-items: center;
     padding: 1rem 2rem;
     margin: 1rem 2rem;
@@ -87,4 +93,164 @@ a {
     font-weight: 600;
     letter-spacing: .4px;
     font-size: 14px;
+    border-radius: 3px;
+}
+
+/* CLIENT */
+
+.recipe_image {
+    overflow: hidden;
+    width: 8em;
+    height: 8em;
+    border-radius: 3px;
+    /*    background: rgba(0, 0, 0, 0.1);*/
+}
+
+.recipe_img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.customer_index,
+.chef_index {
+    padding: 1em 0 4.5em;
+    width: 60%;
+}
+
+.recipes .row {
+    justify-content: center;
+}
+
+.recipe {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.recipe_inner {
+    padding: 2em 4em;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .2);
+    border-radius: 3px;
+    cursor: pointer;
+    width: 90%;
+    position: relative;
+}
+
+.recipe_inner:hover {
+    background: rgba(0, 0, 0, .03);
+}
+
+.recipe_header {
+    display: flex;
+    justify-content: center;
+
+}
+
+.recipe_body {
+    padding-top: 1em;
+}
+
+.recipe_name {
+    max-width: 12em;
+}
+
+.ingredients-table {
+    width: 100%;
+    text-align: left;
+}
+
+.table-headers {
+    font-weight: 500;
+    font-size: 12px;
+    color: #a1a1a1;
+    border: solid #f1f1f1;
+    border-width: 0 0 2px 0;
+    position: sticky;
+    background: #fff;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 0 10px grey;
+}
+
+.table-rows {
+    border: solid #f1f1f1;
+    border-width: 0 0 2px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.table-title {
+    padding: 1rem;
+}
+
+.table-cell {
+    padding: .6rem 1rem;
+}
+
+#recipe_details .modal-body {
+    padding: 0;
+}
+
+/* WAITER */
+
+.waiter_index .custom_card {
+    height: 10.5em;
+    cursor: pointer;
+}
+
+.createInvoiceCard {
+    background: #6174fe;
+}
+
+.pendingInvoicesCard {
+    background: #ffb678;
+}
+
+.kitchenRequestsCard {
+    background: #78d5d7;
+}
+
+.details {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+/* CHEF */
+.chef_index .recipe_inner {
+    cursor: default;
+}
+
+.chef_index .recipe_inner:hover {
+    background: transparent;
+}
+
+.chef_index .recipe_image {
+    cursor: pointer;
+}
+
+.chef_index .recipes button {
+    width: 65%;
+    background: #212227;
+    color: #FFF;
+    text-transform: uppercase;
+    margin-top: 1em;
+}
+
+.chef_index .request_id {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+}
+
+.chef_index .request_placed {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
 }

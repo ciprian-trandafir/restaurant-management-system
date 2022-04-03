@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 User::check_page(2);
@@ -51,6 +53,8 @@ User::check_page(2);
                                 <option value="update recipe">Update Recipe</option>
                                 <option value="insert ingredient">Insert Ingredient</option>
                                 <option value="update ingredient">Update Ingredient</option>
+                                <option value="pay invoice">Pay Invoice</option>
+                                <option value="finish kitchen request">Finish kitchen request</option>
                             </select>
                             <span class="display-error"></span>
                         </div>

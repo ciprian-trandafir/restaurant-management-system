@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 User::check_page();
@@ -25,6 +27,12 @@ User::check_page();
             switch ($user->getAccessLevel()) {
                 case -1:
                     include './index_customer.php';
+                    break;
+                case 0:
+                    include './index_chef.php';
+                    break;
+                case 1:
+                    include './index_waiter.php';
                     break;
                 case 2:
                     include './index_manager.php';

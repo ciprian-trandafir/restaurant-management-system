@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 session_start();

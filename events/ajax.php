@@ -1,7 +1,9 @@
 <?php
 
 foreach (glob('../classes/' . "*.php") as $file) {
-    include_once $file;
+    if (strpos($file, 'index') === false) {
+        include_once $file;
+    }
 }
 
 if (!isset($_POST['action'])) {
@@ -172,6 +174,37 @@ if ($action === 'updateIngredientQty') {
     $qty = trim(htmlspecialchars($_POST['qty']));
 
     Recipe::updateIngredientQty($ing_id, $qty);
+
+    die(json_encode(['response' => true]));
+}
+
+if ($action === 'getRecipeIngredients') {
+    $id_recipe = trim(htmlspecialchars($_POST['id_recipe']));
+    $recipe = new Recipe($id_recipe);
+
+    $output = '';
+    foreach ($recipe->getIngredients() as $ingredient) {
+        $output .= '<tr class="table-rows">
+                        <td class="table-cell">'.$ingredient['product'].'</td>
+                        <td class="table-cell user_full_name">'.$ingredient['quantity'].'</td>
+                    </tr>';
+    }
+
+    die(json_encode(['response' => $output]));
+}
+
+if ($action === 'payInvoice') {
+    $id_invoice = trim(htmlspecialchars($_POST['id_invoice']));
+
+    Invoice::payInvoice($id_invoice);
+
+    die(json_encode(['response' => true]));
+}
+
+if ($action === 'finishKitchenRequest') {
+    $id_request = trim(htmlspecialchars($_POST['id_request']));
+
+    KitchenRequest::finishRequest($id_request);
 
     die(json_encode(['response' => true]));
 }
