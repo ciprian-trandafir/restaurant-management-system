@@ -13,6 +13,7 @@
             }
             foreach ($pending_requests as $request) {
                 $recipe = new Recipe($request['id_recipe']);
+                $amount = KitchenRequest::getAmountByDetails($request['id_invoice'], $request['id_recipe'])[0]['amount'];
                 echo '<div class="recipe" data-id="'.$request['id_recipe'].'">
                 <div class="recipe_inner">
                     <div class="recipe_header">
@@ -24,7 +25,7 @@
                     </div>
                     <div class="recipe_body">
                         <div class="recipe_name">
-                            <span>'.$recipe->getName().'</span>
+                            <span>'.$amount.'x '.$recipe->getName().'</span>
                         </div>
                     </div>
                     <div class="recipe_footer">

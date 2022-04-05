@@ -14,7 +14,7 @@ User::check_page(2);
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Accounts - Restaurant</title>
+    <title>Accounts • Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/accounts.css">
     <?php include './head.php'; ?>

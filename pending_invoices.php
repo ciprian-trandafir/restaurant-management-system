@@ -13,7 +13,7 @@ User::check_page(1);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pending Invoices - Restaurant</title>
+    <title>Pending Invoices • Restaurant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/pending_invoices.css">
@@ -36,6 +36,7 @@ User::check_page(1);
                         </div>';
                 }
                 foreach ($invoices as $invoice) {
+                    $href = Link::getLink('exportPDF', 'events', ['id_invoice' => $invoice['ID']]);
                     echo '<div class="invoice">
                         <div class="invoice_inner">
                             <div class="invoice_header">
@@ -54,7 +55,7 @@ User::check_page(1);
                                 </div>
                             </div>
                             <div class="invoice_footer">
-                                <button class="btn buttonPayInvoice" data-id="'.$invoice['ID'].'">Finish</button>
+                                <a href="'.$href.'" target="_blank" rel="noreferrer noopener nofollow" class="btn buttonPayInvoice">Finish</a>
                             </div>
                         </div>
                     </div>';

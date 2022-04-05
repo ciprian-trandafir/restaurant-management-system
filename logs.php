@@ -14,7 +14,7 @@ User::check_page(2);
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Logs - Restaurant</title>
+    <title>Logs • Restaurant</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/logs.css">
     <?php include './head.php'; ?>
@@ -53,6 +53,7 @@ User::check_page(2);
                                 <option value="update recipe">Update Recipe</option>
                                 <option value="insert ingredient">Insert Ingredient</option>
                                 <option value="update ingredient">Update Ingredient</option>
+                                <option value="create invoice">Create invoice</option>
                                 <option value="pay invoice">Pay Invoice</option>
                                 <option value="finish kitchen request">Finish kitchen request</option>
                             </select>

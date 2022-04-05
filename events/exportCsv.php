@@ -14,7 +14,7 @@ if (!isset($params['action'])) {
     exit;
 }
 
-session_start();
+User::check_page(2);
 
 $action = $params['action'];
 

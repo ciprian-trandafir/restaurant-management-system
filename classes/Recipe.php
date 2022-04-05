@@ -83,7 +83,21 @@ class Recipe
         $this->ingredients = $stmt->fetchAll();
     }
 
-    public static function loadRecipes($force = false)
+    public static function checkRecipeAvailability($id, $amount): bool
+    {
+        $ingredients = (new Recipe($id))->getIngredients();
+
+        foreach ($ingredients as $ingredient) {
+            $ingredient_obj = new Inventory($ingredient['id_product']);
+            if ((floatval($amount) * floatval($ingredient['quantity'])) > floatval($ingredient_obj->getStock())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public static function loadRecipes($force = false, $filter = false)
     {
         $sql = "SELECT * FROM `recipes`";
 
@@ -111,6 +125,10 @@ class Recipe
 
                 $sql .= ' `name` LIKE "%'.$filters['name'].'%"';
             }
+        }
+
+        if ($force && $filter) {
+            $sql .= ' WHERE `name` LIKE "%'.$filter.'%"';
         }
 
         $stmt = DbUtils::getInstance(true)->prepare($sql.' ORDER BY `ID` DESC');

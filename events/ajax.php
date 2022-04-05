@@ -145,6 +145,22 @@ if ($action === 'applyInventoryFilters') {
     die(json_encode(['response' => $output]));
 }
 
+if ($action === 'applyInventoryFilters_1') {
+    $filter = trim(htmlspecialchars($_POST['filter']));
+
+    $inventories = Inventory::loadInventory($filter);
+    $output = '';
+    foreach ($inventories as $inventory) {
+        $output .= '<tr class="table-rows" data-id="'.$inventory['ID'].'">
+                        <td class="table-cell product_name">'.$inventory['product'].'</td>
+                        <td class="table-cell product_price">'.$inventory['price'].'</td>
+                        <td class="table-cell product_stock">'.$inventory['stock'].'</td>
+                    </tr>';
+    }
+
+    die(json_encode(['response' => $output]));
+}
+
 if ($action === 'addIngredient') {
     $recipe = trim(htmlspecialchars($_POST['recipe']));
     $product_id = trim(htmlspecialchars($_POST['product_id']));
@@ -193,18 +209,41 @@ if ($action === 'getRecipeIngredients') {
     die(json_encode(['response' => $output]));
 }
 
-if ($action === 'payInvoice') {
-    $id_invoice = trim(htmlspecialchars($_POST['id_invoice']));
-
-    Invoice::payInvoice($id_invoice);
-
-    die(json_encode(['response' => true]));
-}
-
 if ($action === 'finishKitchenRequest') {
     $id_request = trim(htmlspecialchars($_POST['id_request']));
 
     KitchenRequest::finishRequest($id_request);
+
+    die(json_encode(['response' => true]));
+}
+
+if ($action === 'applyRecipeFilters') {
+    $filter = trim(htmlspecialchars($_POST['filter']));
+
+    $recipes = Recipe::loadRecipes(true, $filter);
+    $output = '';
+    foreach ($recipes as $recipe) {
+        $output .= '<tr class="table-rows" data-id="'.$recipe['ID'].'">
+                    <td class="table-cell recipe_name">'.$recipe['name'].'</td>
+                    <td class="table-cell recipe_price">'.$recipe['price'].'</td>
+                </tr>';
+    }
+
+    die(json_encode(['response' => $output]));
+}
+
+if ($action === 'checkRecipeAvailability') {
+    $id_recipe = trim(htmlspecialchars($_POST['id_recipe']));
+    $amount = trim(htmlspecialchars($_POST['amount']));
+
+    die(json_encode(['success' => Recipe::checkRecipeAvailability($id_recipe, $amount)]));
+}
+
+if ($action === 'finishInvoice') {
+    $data = $_POST['data'];
+    $mentions= trim(htmlspecialchars($_POST['mentions']));
+
+    Invoice::createInvoice($data, $mentions);
 
     die(json_encode(['response' => true]));
 }

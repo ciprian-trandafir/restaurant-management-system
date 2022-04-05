@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <title>Register - Restaurant</title>
+    <title>Register • Restaurant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/register.css">

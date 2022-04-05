@@ -6,6 +6,8 @@ foreach (glob('../classes/' . "*.php") as $file) {
     }
 }
 
+User::check_page(2);
+
 if (isset($_POST["import_csv_submit"])) {
     $filename = $_FILES["file"]["tmp_name"];
 

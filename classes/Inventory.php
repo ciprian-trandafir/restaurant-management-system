@@ -59,6 +59,12 @@ class Inventory
         Log::insertLog($_SESSION['id_user'], 'update inventory', 'updated stock - id '.$id);
     }
 
+    public static function downStock($id_product, $qty)
+    {
+        $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `stock` = `stock` - ? WHERE `ID` = ?");
+        $stmt->execute(array($qty, $id_product));
+    }
+
     public static function updatePrice($id, $price)
     {
         $stmt = DbUtils::getInstance(true)->prepare("UPDATE `inventory` SET `price` = ?, `date_upd` = CURRENT_TIMESTAMP() WHERE `ID` = ?");

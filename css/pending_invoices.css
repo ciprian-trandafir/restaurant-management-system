@@ -8,8 +8,12 @@
     overflow: auto;
 }
 
-a {
+.header a {
     color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.invoice_footer a {
+    color: #FFF !important;
 }
 
 .invoice_image {
@@ -68,7 +72,7 @@ a {
     padding-top: 1em;
 }
 
-.invoice_footer button {
+.buttonPayInvoice {
     width: 65%;
     background: #212227;
     color: #FFF;

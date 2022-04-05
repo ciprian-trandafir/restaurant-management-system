@@ -13,7 +13,7 @@ User::check_page(1);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kitchen Requests - Restaurant</title>
+    <title>Kitchen Requests • Restaurant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/kitchen_requests.css">
@@ -33,6 +33,7 @@ User::check_page(1);
                         </div>';
                     }
                     foreach ($kitchen_requests as $kitchen_request) {
+                        $amount = KitchenRequest::getAmountByDetails($kitchen_request['id_invoice'], $kitchen_request['id_recipe'])[0]['amount'];
                         $recipe = new Recipe($kitchen_request['id_recipe']);
                         $footer = '';
                         $show_footer = (bool)$kitchen_request['date_finished'];
@@ -53,7 +54,7 @@ User::check_page(1);
                                 </div>
                                 <div class="recipe_body">
                                     <div class="recipe_name">
-                                        <span>'.$recipe->getName().'</span>
+                                        <span>'.$amount.'x '.$recipe->getName().'</span>
                                     </div>
                                     <div class="recipe_price">
                                         <span>'.$recipe->getPrice().' RON</span>
