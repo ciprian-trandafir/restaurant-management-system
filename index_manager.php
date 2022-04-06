@@ -1,4 +1,3 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <div class="manager_index">
     <div class="custom_card stockCard">
         <div class="icon-container stockIcon">
@@ -24,25 +23,5 @@
     </div>
     <div class="manager_footer">
         <button class="button home_refresh">Refresh</button>
-        <button class="button home_sales">View Today Sales</button>
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" id="home_sales">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Today Sales</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <canvas id="chartSales" style="width:100%; max-width:600px"></canvas>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

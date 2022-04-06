@@ -25,18 +25,12 @@ if (isset($_POST['submit'])) {
     if ($email === false) {
         $errors['email'] = 'Invalid Email Address';
     }
-    $access_level = $_POST['access-level'];
-    $access_level = filter_var($access_level, FILTER_VALIDATE_INT);
 
-    if ($access_level === false) {
-        $errors['access-level'] = 'Invalid Access Level';
-    }
-
-    if ($email !== false && $access_level !== false) {
+    if ($email !== false) {
         if (User::checkEmail($email)) {
             $errors['email'] = 'This email address already exists. Login instead!';
         } else {
-           if (User::register($firstname, $lastname, $email, $password, $access_level)) {
+           if (User::register($firstname, $lastname, $email, $password)) {
                $_POST = [];
                $successfully_registered = true;
            }
@@ -46,7 +40,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <title>Register • Restaurant</title>
     <meta charset="utf-8">
@@ -65,9 +59,6 @@ if (isset($_POST['submit'])) {
                     <div class="mainSocials">
 
                     </div>
-                    <!--<p class="mainNote">
-                        sau foloseste adresa e-mail
-                    </p>-->
                     <div class="inputContainer">
                         <input type="text" name="first-name" <?php if (isset($errors['first-name'])) echo 'class="input-error"'; ?> placeholder="First Name" value="<?php if (isset($_POST['first-name'])) echo $_POST['first-name'];?>" required>
                         <?php
@@ -100,23 +91,6 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                     </div>
-                    <div class="inputContainer">
-                        <select name="access-level" required <?php if (isset($errors['access-level'])) echo 'class="input-error"'; ?>>
-                            <option value="" disabled selected>Access Level</option>
-                            <option value="2" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 2) echo 'selected';?>>Manager</option>
-                            <option value="1" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 1) echo 'selected';?>>Ospatar</option>
-                            <option value="0" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == 0) echo 'selected';?>>Bucatar</option>
-                            <option value="-1" <?php if (isset($_POST['access-level']) && $_POST['access-level'] == -1) echo 'selected';?>>Client</option>
-                        </select>
-                        <?php
-                        if (isset($errors['access-level'])) {
-                            echo '<span class="display-error">'.$errors['access-level'].'</span>';
-                        }
-                        ?>
-                    </div>
-                    <!--<p class="forgotPassword">
-                        Ti-ai uitat parola?
-                    </p>-->
                     <input type="submit" name="submit" class="mainButton" value="Register">
                 </form>
                 <?php

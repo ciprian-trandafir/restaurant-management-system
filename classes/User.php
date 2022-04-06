@@ -105,16 +105,11 @@ class User
         Link::redirect('login');
     }
 
-    public static function register($first_name, $last_name, $email, $password, $access_level): bool
+    public static function register($first_name, $last_name, $email, $password): bool
     {
         if (!User::checkEmail($email)) {
-            $active = 0;
-            if ($access_level == -1) {
-                $active = 1;
-            }
-
-            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`, `active`) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email, $access_level, $active));
+            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`) VALUES (?, ?, ?, ?)");
+            $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email));
             return true;
         }
 
@@ -172,9 +167,9 @@ class User
         return false;
     }
 
-    public static function getUsers()
+    public static function getUsers($access_level = false)
     {
-        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users`");
+        $stmt = DbUtils::getInstance(true)->prepare("SELECT * FROM `users`".($access_level ? ' WHERE `access_level` = '.$access_level : ''));
         $stmt->execute();
         return $stmt->fetchAll();
     }

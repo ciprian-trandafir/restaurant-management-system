@@ -72,14 +72,6 @@ User::check_page(2);
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <!-- <div class="item-container checkbox-container">
-                            <label for="asc">ASC</label>
-                            <input type="checkbox" name="asc">
-                        </div>
-                        <div class="item-container checkbox-container">
-                            <label for="desc">DESC</label>
-                            <input type="checkbox" name="desc">
-                        </div> -->
                     </div>
                     <div class="menu-item">
                         <div class="item-container">

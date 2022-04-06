@@ -248,5 +248,32 @@ if ($action === 'finishInvoice') {
     die(json_encode(['response' => true]));
 }
 
-Link::redirect('index');
+if ($action === 'getInvoices') {
+    $user = trim(htmlspecialchars($_POST['user']));
+    $sort = trim(htmlspecialchars($_POST['sort']));
+    $date_from = trim(htmlspecialchars($_POST['date_from']));
+    $date_to = trim(htmlspecialchars($_POST['date_to']));
+
+    $date_from = str_replace('T', ' ', $date_from);
+    $date_to = str_replace('T', ' ', $date_to);
+
+    $invoices = Invoice::getInvoices($date_from, $date_to, $sort, $user);
+
+    $output = '';
+    $total = 0;
+    foreach ($invoices as $invoice) {
+        $total += floatval($invoice['total']);
+        $output .= '<tr class="table-rows" data-id="'.$invoice['invoice_id'].'">
+                    <td class="table-cell">'.$invoice['invoice_id'].'</td>
+                    <td class="table-cell">'.$invoice['first_name'].' '.$invoice['last_name'].'</td>
+                    <td class="table-cell">'.$invoice['total'].'</td>
+                    <td class="table-cell">'.$invoice['mentions'].'</td>
+                    <td class="table-cell">'.$invoice['date_add'].'</td>
+                    <td class="table-cell">'.$invoice['date_paid'].'</td>
+                </tr>';
+    }
+
+    die(json_encode(['response' => $output, 'total' => number_format($total, 2), 'invoices' => $invoices]));
+}
+
 exit;

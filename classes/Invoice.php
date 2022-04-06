@@ -76,6 +76,34 @@ class Invoice
         return $stmt->fetchAll();
     }
 
+    public static function getInvoices($date_from, $date_to, $order, $user)
+    {
+        $sql = 'SELECT inv.`ID` AS invoice_id, inv.*, u.* FROM `invoices` inv, `users` u WHERE u.`ID` = inv.`ID_user`';
+        if ($date_to && $date_from) {
+            $sql .= " AND `date_paid` > '".$date_from.":00' AND `date_paid` < '".$date_to.":00'";
+        } else if ($date_from) {
+            $sql .= " AND `date_paid` > '".$date_from.":00'";
+        } else if ($date_to) {
+            $sql .= " AND `date_paid` < '".$date_to.":00'";
+        }
+
+        if ($user) {
+            if (strpos($sql, 'WHERE') === false) {
+                $sql .= ' WHERE';
+            }
+
+            if (strpos($sql, 'WHERE') !== false) {
+                $sql .= ' AND ';
+            }
+
+            $sql .= " `ID_user` = ".$user;
+        }
+
+        $stmt = DbUtils::getInstance(true)->prepare($sql.' ORDER BY inv.`ID` '.$order);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public static function getPendingInvoices()
     {
         $sql = 'SELECT * FROM `invoices` WHERE `paid` = 0 AND `ID_user` = ?';

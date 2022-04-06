@@ -69,29 +69,4 @@ $('body')
                 $button.closest('.recipe').remove();
             }
         })
-    })
-    .on('click', '.home_sales', function() {
-        $('#home_sales').modal('show');
-        let xValues = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
-        let yValues = [45.99, 42.99, 64.99, 59.99, 49.99, 59.99, 69.99, 41.99, 41.99];
-
-        new Chart("chartSales", {
-            type: "line",
-            data: {
-                labels: xValues,
-                datasets: [{
-                    fill: false,
-                    lineTension: 0,
-                    backgroundColor: "rgba(0, 0, 255, 1.0)",
-                    borderColor: "rgba(0, 0, 255, 0.1)",
-                    data: yValues
-                }]
-            },
-            options: {
-                legend: {display: false},
-                scales: {
-                    yAxes: [{ticks: {min: 40, max: 70}}],
-                }
-            }
-        });
     });

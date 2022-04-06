@@ -84,11 +84,18 @@ if (Invoice::checkInvoice($params['id_invoice'])) {
     //total
     $pdf->Cell(40, 10, "Total: ".$total);
 
-    //footer
+    //author
     $pdf->Ln();
     $pdf->Ln();
     $user = User::getDetails($_SESSION['id_user']);
     $pdf->Cell(40, 10, "by ".$user['first_name'].' '.$user['last_name']);
+
+    //date
+    $pdf->Ln();
+    $pdf->Ln();
+    $pdf->Cell(40, 10, "Date placed ".$invoice->date_add);
+    $pdf->Ln();
+    $pdf->Cell(40, 10, "Date paid ".$invoice->date_paid);
 
     //save & open file
     $filepath = '../pdf/'.$file_name;

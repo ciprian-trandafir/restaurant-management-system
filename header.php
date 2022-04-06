@@ -13,6 +13,7 @@
                 $current_location == 'inventory' ? $class_inventory = 'item-selected' : $class_inventory = '';
                 $current_location == 'recipes' ? $class_recipes = 'item-selected' : $class_recipes = '';
                 $current_location == 'accounts' ? $class_accounts = 'item-selected' : $class_accounts = '';
+                $current_location == 'invoices' ? $class_invoices = 'item-selected' : $class_invoices = '';
                 echo '<div class="management">
                     <div class="management_inner">
                         <div class="management_main">
@@ -39,6 +40,11 @@
                             <div class="management_action '.$class_recipes.'">
                                 <a href="'.Link::getLink('recipes').'">
                                     Recipes
+                                </a>
+                            </div>
+                            <div class="management_action '.$class_invoices.'">
+                                <a href="'.Link::getLink('invoices').'">
+                                    Invoices
                                 </a>
                             </div>
                         </div>
