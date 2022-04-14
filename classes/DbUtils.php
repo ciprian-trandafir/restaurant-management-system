@@ -4,20 +4,10 @@ class DbUtils
 {
     private static $conn;
 
-/*    protected static $server = "localhost";
-    protected static $user_name = "ct224";
-    protected static $password = "vta8nmgu";
-    protected static $database = "ct224";*/
-
     protected static $server = "localhost";
     protected static $user_name = "root";
     protected static $password = "";
     protected static $database = "restaurant";
-
-/*    protected static $server = "localhost";
-    protected static $user_name = "lt142";
-    protected static $password = "cbd0po8k";
-    protected static $database = "lt142";*/
 
     public static function getInstance($return = false)
     {

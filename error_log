@@ -1,0 +1,45 @@
+[07-Apr-2022 22:32:03 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:32:09 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:32:33 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:36:44 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:37:03 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:37:07 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_last() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:10
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 10
+[07-Apr-2022 22:38:22 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_first() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:13
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 13
+[07-Apr-2022 22:38:23 Europe/Bucharest] PHP Fatal error:  Uncaught Error: Call to undefined function array_key_first() in /home/cipriannexloc/public_html/restaurant/classes/Link.php:13
+Stack trace:
+#0 /home/cipriannexloc/public_html/restaurant/inventory.php(95): Link::getLink('exportCsv', 'events', Array)
+#1 {main}
+  thrown in /home/cipriannexloc/public_html/restaurant/classes/Link.php on line 13
+2022-04-14 19:10:01 SQLSTATE[HY000] [1045] Access denied for user 'cipriannexloc_restaurant'@'localhost' (using password: YES)
+2022-04-14 19:10:02 SQLSTATE[HY000] [1045] Access denied for user 'cipriannexloc_restaurant'@'localhost' (using password: YES)
+2022-04-14 19:10:03 SQLSTATE[HY000] [1045] Access denied for user 'cipriannexloc_restaurant'@'localhost' (using password: YES)
+2022-04-14 19:10:07 SQLSTATE[HY000] [1045] Access denied for user 'cipriannexloc_restaurant'@'localhost' (using password: YES)
+2022-04-14 19:10:12 SQLSTATE[HY000] [1045] Access denied for user 'cipriannexloc_restaurant'@'localhost' (using password: YES)

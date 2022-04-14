@@ -98,7 +98,7 @@ User::check_page(1);
         </div>
     </div>
     <div class="bottomPanel d-flex">
-        <div class="d-flex">
+        <div class="d-flex flex-end">
             <div class="info">
                 <h4 class="infoText">Special requests:</h4>
                 <input type="text" name="mentions" id="mentions" class="chosen">

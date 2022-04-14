@@ -7,7 +7,9 @@ class Link
         $link = Link::get_base_url().($specified ? $specified.'/' : '').$page.'.php';
         $first = true;
         if (is_array($params) && count($params)) {
-            $last = array_key_last($params);
+            end($params);
+            $last = key($params);
+            reset($params);
             foreach ($params as $key => $param) {
                 if ($first) {
                     $first = false;

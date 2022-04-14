@@ -206,11 +206,10 @@ a {
 }
 
 .doneBtn {
-    padding: .75rem 4rem;
-    max-height: 3rem;
+    padding: .2rem 4rem;
+    height: 3rem;
     border-radius: 5px;
     background: #E4CC37;
-    border: none;
     color: #37383d;
     font-size: 12px;
     text-transform: uppercase;
@@ -297,9 +296,15 @@ table tbody {
     font-weight: 800;
     background: rgba(177, 56, 56, 1);
     margin-left: 0.25rem;
-    padding: 0.55rem 1rem;
+    padding: 0.55rem 1.25rem;
+    display: flex;
+    align-items: center;
 }
 
 .leftMargin1 {
     margin-left: 1rem;
+}
+
+.flex-end {
+    align-items: end;
 }

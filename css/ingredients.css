@@ -73,7 +73,7 @@ label, .sort-by {
 .inventory-table {
     width: 100%;
     text-align: left;
-    margin-top: 1.6rem;
+    padding-top: 1.6rem;
 }
 
 .inventory-table-wrapper,
