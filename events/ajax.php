@@ -63,8 +63,8 @@ if ($action === 'insertInventory') {
                 </td>
                 <td class="table-cell product_name">'.$product_name.'</td>
                 <td class="table-cell product_stock">'.$stock.'</td>
+                <td class="table-cell product_price">'.$measure_unit.'</td> 
                 <td class="table-cell product_measure">'.$price.'</td>
-                <td class="table-cell product_price">'.$measure_unit.'</td>
             </tr>';
 
     die(json_encode(['response' => $output]));

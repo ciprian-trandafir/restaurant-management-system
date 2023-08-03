@@ -47,10 +47,10 @@ User::check_page(2);
                             $role = 'Client';
                             break;
                         case 0:
-                            $role = 'Bucătar';
+                            $role = 'Chef';
                             break;
                         case 1:
-                            $role = 'Ospătar';
+                            $role = 'Waiter';
                             break;
                         case 2:
                             $role = 'Manager';
@@ -96,8 +96,8 @@ User::check_page(2);
                             <select name="edit_role" id="edit_role">
                                 <option value="" disabled selected>Select role</option>
                                 <option value="2">Manager</option>
-                                <option value="1">Ospătar</option>
-                                <option value="0">Bucătar</option>
+                                <option value="1">Waiter</option>
+                                <option value="0">Chef</option>
                                 <option value="-1">Client</option>
                             </select>
                             <span class="display-error"></span>

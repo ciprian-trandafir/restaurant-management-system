@@ -1,7 +1,7 @@
 <div class="footer">
     <div class="container">
        <div class="copyright">
-           © 2022 - Ciprian Trandafir
+           © <?php echo date('Y'); ?> - Ciprian Trandafir
        </div>
     </div>
     <?php include './foo.php'; ?>

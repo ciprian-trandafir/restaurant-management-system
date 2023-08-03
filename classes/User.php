@@ -108,7 +108,16 @@ class User
     public static function register($first_name, $last_name, $email, $password): bool
     {
         if (!User::checkEmail($email)) {
-            $stmt = DbUtils::getInstance(true)->prepare("INSERT INTO users(`first_name`, `last_name`, `password`, `email`) VALUES (?, ?, ?, ?)");
+            $users_count_stmt = DbUtils::getInstance(true)->prepare("SELECT COUNT(*) AS `users_count` FROM `users`");
+            $users_count_stmt->execute();
+            $users_count = $users_count_stmt->fetch()['users_count'];
+
+            $sql = "INSERT INTO users(`first_name`, `last_name`, `password`, `email`) VALUES (?, ?, ?, ?)";
+            if (!$users_count) {
+                $sql = "INSERT INTO users(`first_name`, `last_name`, `password`, `email`, `access_level`) VALUES (?, ?, ?, ?, 2)";
+            }
+
+            $stmt = DbUtils::getInstance(true)->prepare($sql);
             $stmt->execute(array($first_name, $last_name, password_hash($password, PASSWORD_DEFAULT), $email));
             return true;
         }
