@@ -14,7 +14,7 @@
 			</div>
 		</div>
 		<div style="color:#f0f0f0; display: flex; align-items:center; justify-content:center; height:50px; margin-top:-51px; background-color:#474747; border-top: 1px solid rgba(0,0,0,0.15); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;">
-		    <span>© 2022 - Ciprian Trandafir</span>
+		    <span>© <?php echo date('Y'); ?> - Ciprian Trandafir</span>
         </div>
 	</body>
 </html>
